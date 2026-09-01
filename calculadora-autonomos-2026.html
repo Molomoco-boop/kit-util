@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita de cuota de autónomos RETA 2026 según la Orden PJC/297/2026. Orientativa. No es asesoramiento fiscal.">
+  <title>Calculadora cuota autónomos 2026 — Kit Útil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="index.html">Tienda</a>
+        <a href="calculadora-autonomos-2026.html" aria-current="page">Calculadora RETA 2026</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora cuota autónomos 2026</h1>
+      <p class="lede">
+        Estima el tramo RETA y la cuota mensual a partir de tus rendimientos netos previstos.
+        Las bases salen de la <strong>Orden PJC/297/2026, artículo 18</strong>
+        (BOE-A-2026-7296). El tipo conjunto del 31,50&nbsp;% es la suma habitual de
+        contingencias comunes, profesionales, cese de actividad, formación profesional y MEI.
+        Cifra orientativa: confirma en
+        <a href="https://portal.seg-social.gob.es/wps/portal/importass" rel="noopener noreferrer">Importass</a>
+        o con tu gestoría.
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Tus números</h2>
+        <div class="field">
+          <label for="neto">Rendimientos netos mensuales previstos (€)</label>
+          <input id="neto" name="neto" type="number" min="0" step="0.01" value="1500" inputmode="decimal">
+          <span class="hint">Ingresos − gastos deducibles (la regularización de la TGSS usa el rendimiento neto computable del ejercicio). Esto no calcula IRPF ni IVA.</span>
+        </div>
+        <div class="field">
+          <label for="base-mode">Base de cotización</label>
+          <div class="radio-row">
+            <label><input type="radio" name="base-mode" value="min" checked> Mínima del tramo</label>
+            <label><input type="radio" name="base-mode" value="max"> Máxima del tramo</label>
+            <label><input type="radio" name="base-mode" value="custom"> Otra</label>
+          </div>
+        </div>
+        <div class="field" id="custom-wrap" hidden>
+          <label for="base-custom">Base elegida (€ / mes)</label>
+          <input id="base-custom" type="number" min="0" step="0.01" inputmode="decimal">
+          <span class="hint">Debe estar entre la mínima y la máxima del tramo.</span>
+        </div>
+        <div class="field">
+          <label>
+            <input type="checkbox" id="tarifa-plana">
+            Mostrar también la tarifa plana estatal (80&nbsp;€/mes, alta inicial; verifica requisitos)
+          </label>
+          <span class="hint">No comprueba si tienes derecho. El MEI u otros recargos pueden ir aparte; mira Importass.</span>
+        </div>
+        <button class="btn" type="button" id="calc-btn">Calcular cuota</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado estimado</h2>
+        <div class="result">
+          <div class="result-box">
+            <span>Cuota mensual</span>
+            <strong id="out-cuota">—</strong>
+          </div>
+          <div class="result-box">
+            <span>Cuota anual (×12)</span>
+            <strong id="out-anual">—</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>Tramo</span><span id="out-tramo">—</span></li>
+          <li><span>Base usada</span><span id="out-base">—</span></li>
+          <li><span>Base mín. – máx.</span><span id="out-rango">—</span></li>
+          <li><span>Tipo conjunto</span><span>31,50&nbsp;%</span></li>
+          <li><span>Tarifa plana (si marcas)</span><span id="out-plana">—</span></li>
+        </ul>
+        <p class="hint" id="out-aviso"></p>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <h2>Tabla RETA 2026 (bases oficiales)</h2>
+      <p class="fuente">
+        Fuente: Orden PJC/297/2026, de 30 de marzo, art. 18.1
+        (<a href="https://www.boe.es/eli/es/o/2026/03/30/pjc297" rel="noopener noreferrer">ELI BOE-A-2026-7296</a>).
+        Bases en euros/mes. Cuotas mín. y máx. = base × 31,50&nbsp;% (estimación de esta página, redondeo a 2 decimales).
+      </p>
+      <div class="table-wrap">
+        <table id="tabla-tramos">
+          <thead>
+            <tr>
+              <th>Tabla</th>
+              <th>Tramo</th>
+              <th>Rendimientos netos €/mes</th>
+              <th>Base mín.</th>
+              <th>Base máx.</th>
+              <th>Cuota mín. est.</th>
+              <th>Cuota máx. est.</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <h2>De dónde sale el 31,50&nbsp;%</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Concepto</th><th>Tipo 2026</th><th>Dónde está</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Contingencias comunes</td><td>28,30&nbsp;%</td><td>Art. 18.2.a Orden PJC/297/2026</td></tr>
+            <tr><td>Contingencias profesionales</td><td>1,30&nbsp;%</td><td>Art. 18.2.b (0,66&nbsp;% IT + 0,64&nbsp;% IP/fallecimiento)</td></tr>
+            <tr><td>Cese de actividad</td><td>0,90&nbsp;%</td><td>Recaudación conjunta RETA 2026</td></tr>
+            <tr><td>Formación profesional</td><td>0,10&nbsp;%</td><td>Recaudación conjunta RETA 2026</td></tr>
+            <tr><td>MEI</td><td>0,90&nbsp;%</td><td>Art. 18.2.c Orden PJC/297/2026</td></tr>
+            <tr><td><strong>Tipo conjunto usado aquí</strong></td><td><strong>31,50&nbsp;%</strong></td><td>Suma de los cinco</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fuente">
+        Base máxima general del RETA en 2026: 5.101,20&nbsp;€/mes (art. 18.1).
+        Autónomos societarios y algunos familiares tienen un suelo de base distinto
+        (art. 308 LGSS): esta calculadora <em>no</em> aplica ese suelo.
+        SETA, venta ambulante, pluriactividad, artistas y tarifa plana tienen reglas propias.
+      </p>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso (léelo)</h2>
+      <p>
+        Esta página es una herramienta gratuita de orientación. No es asesoramiento fiscal,
+        laboral, de Seguridad Social ni un servicio de gestoría. No presenta el modelo 036/037,
+        no te da de alta, no elige tu base y no habla con la TGSS. La cuota real depende de
+        la base comunicada, de las coberturas, de bonificaciones y de la regularización anual
+        por rendimientos. Si hay duda, Importass y un profesional colegiado. Nada de lo que
+        ves aquí es un presupuesto de impuestos ni un dictamen.
+      </p>
+    </aside>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>Si lo que quieres es ordenar el dinero de casa</h2>
+        <p>La calculadora es gratis. El Presupuesto familiar 2026 es una hoja de seguimiento, 6,90&nbsp;€. No es asesoramiento fiscal.</p>
+      </div>
+      <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=miguelmuletginerrr@gmail.com&amp;item_name=Presupuesto%20Familiar%202026&amp;amount=6.90&amp;currency_code=EUR&amp;charset=UTF-8">Pagar 6,90 € · Presupuesto familiar</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España</p>
+      <p><a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+  const TIPO = 0.315;
+  const TRAMOS = [
+    { tabla: "Reducida", n: 1, minR: 0,      maxR: 670,     minB: 653.59, maxB: 718.94, label: "≤ 670" },
+    { tabla: "Reducida", n: 2, minR: 670.01, maxR: 900,     minB: 718.95, maxB: 900.00, label: "> 670 y ≤ 900" },
+    { tabla: "Reducida", n: 3, minR: 900.01, maxR: 1166.69, minB: 849.67, maxB: 1166.70, label: "> 900 y < 1.166,70" },
+    { tabla: "General",  n: 1, minR: 1166.70,maxR: 1300,    minB: 950.98, maxB: 1300.00, label: "≥ 1.166,70 y ≤ 1.300" },
+    { tabla: "General",  n: 2, minR: 1300.01,maxR: 1500,    minB: 960.78, maxB: 1500.00, label: "> 1.300 y ≤ 1.500" },
+    { tabla: "General",  n: 3, minR: 1500.01,maxR: 1700,    minB: 960.78, maxB: 1700.00, label: "> 1.500 y ≤ 1.700" },
+    { tabla: "General",  n: 4, minR: 1700.01,maxR: 1850,    minB: 1143.79,maxB: 1850.00, label: "> 1.700 y ≤ 1.850" },
+    { tabla: "General",  n: 5, minR: 1850.01,maxR: 2030,    minB: 1209.15,maxB: 2030.00, label: "> 1.850 y ≤ 2.030" },
+    { tabla: "General",  n: 6, minR: 2030.01,maxR: 2330,    minB: 1274.51,maxB: 2330.00, label: "> 2.030 y ≤ 2.330" },
+    { tabla: "General",  n: 7, minR: 2330.01,maxR: 2760,    minB: 1356.21,maxB: 2760.00, label: "> 2.330 y ≤ 2.760" },
+    { tabla: "General",  n: 8, minR: 2760.01,maxR: 3190,    minB: 1437.91,maxB: 3190.00, label: "> 2.760 y ≤ 3.190" },
+    { tabla: "General",  n: 9, minR: 3190.01,maxR: 3620,    minB: 1519.61,maxB: 3620.00, label: "> 3.190 y ≤ 3.620" },
+    { tabla: "General",  n:10, minR: 3620.01,maxR: 4050,    minB: 1601.31,maxB: 4050.00, label: "> 3.620 y ≤ 4.050" },
+    { tabla: "General",  n:11, minR: 4050.01,maxR: 6000,    minB: 1732.03,maxB: 5101.20, label: "> 4.050 y ≤ 6.000" },
+    { tabla: "General",  n:12, minR: 6000.01,maxR: Infinity,minB: 1928.10,maxB: 5101.20, label: "> 6.000" }
+  ];
+
+  const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+  const cuota = b => Math.round(b * TIPO * 100) / 100;
+
+  function findTramo(neto) {
+    for (const t of TRAMOS) {
+      if (neto >= t.minR && neto <= t.maxR) return t;
+    }
+    return TRAMOS[TRAMOS.length - 1];
+  }
+
+  function renderTabla() {
+    const tb = document.querySelector("#tabla-tramos tbody");
+    tb.innerHTML = TRAMOS.map(t => `<tr data-key="${t.tabla}-${t.n}">
+      <td>${t.tabla}</td>
+      <td>Tramo ${t.n}</td>
+      <td>${t.label}</td>
+      <td>${fmt(t.minB)}</td>
+      <td>${fmt(t.maxB)}</td>
+      <td>${fmt(cuota(t.minB))}</td>
+      <td>${fmt(cuota(t.maxB))}</td>
+    </tr>`).join("");
+  }
+
+  function calcular() {
+    const neto = Number(document.getElementById("neto").value);
+    if (!Number.isFinite(neto) || neto < 0) return;
+    const t = findTramo(neto);
+    const mode = document.querySelector("input[name='base-mode']:checked").value;
+    let base = t.minB;
+    let aviso = "";
+    if (mode === "max") base = t.maxB;
+    if (mode === "custom") {
+      const raw = Number(document.getElementById("base-custom").value);
+      base = raw;
+      if (!Number.isFinite(raw)) {
+        aviso = "Escribe una base numérica.";
+        base = t.minB;
+      } else if (raw < t.minB || raw > t.maxB) {
+        aviso = "La base está fuera del tramo: se muestra igualmente, pero la TGSS no la admitiría así.";
+      }
+    }
+    const c = cuota(base);
+    document.getElementById("out-cuota").textContent = fmt(c);
+    document.getElementById("out-anual").textContent = fmt(c * 12);
+    document.getElementById("out-tramo").textContent = t.tabla + " · tramo " + t.n + " · " + t.label;
+    document.getElementById("out-base").textContent = fmt(base);
+    document.getElementById("out-rango").textContent = fmt(t.minB) + " – " + fmt(t.maxB);
+    const plana = document.getElementById("tarifa-plana").checked;
+    document.getElementById("out-plana").textContent = plana
+      ? "80,00 €/mes (estimación; no verifica el derecho)"
+      : "No aplicada";
+    document.getElementById("out-aviso").textContent = aviso;
+    document.querySelectorAll("#tabla-tramos tbody tr").forEach(tr => {
+      tr.classList.toggle("is-active", tr.getAttribute("data-key") === t.tabla + "-" + t.n);
+    });
+  }
+
+  document.querySelectorAll("input[name='base-mode']").forEach(r => {
+    r.addEventListener("change", () => {
+      document.getElementById("custom-wrap").hidden = document.querySelector("input[name='base-mode']:checked").value !== "custom";
+      calcular();
+    });
+  });
+  ["neto", "base-custom", "tarifa-plana"].forEach(id => {
+    document.getElementById(id).addEventListener("input", calcular);
+    document.getElementById(id).addEventListener("change", calcular);
+  });
+  document.getElementById("calc-btn").addEventListener("click", calcular);
+  renderTabla();
+  calcular();
+  </script>
+</body>
+</html>
