@@ -459,3 +459,88 @@ tr.is-active {
     max-width: none;
   }
 }
+
+/* —— Fichas de producto (SEO) —— */
+.landing-layout {
+  display: grid;
+  grid-template-columns: 1.55fr 0.9fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding-bottom: 2.5rem;
+}
+
+.prose {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.35rem 1.4rem 1.5rem;
+}
+
+.prose h1 {
+  max-width: 22ch;
+  font-size: clamp(1.85rem, 3.6vw, 2.55rem);
+}
+
+.prose h2 {
+  font-size: 1.28rem;
+  margin-top: 1.5rem;
+}
+
+.prose p,
+.prose li {
+  color: var(--ink-soft);
+}
+
+.prose ul {
+  padding-left: 1.15rem;
+  margin: 0.4rem 0 1rem;
+}
+
+.prose li {
+  margin-bottom: 0.35rem;
+}
+
+.buy-box {
+  position: sticky;
+  top: 4.5rem;
+}
+
+.buy-box .btn {
+  margin-top: 0.35rem;
+}
+
+.buy-box .btn + .btn,
+.buy-box .btn + a.btn-ghost {
+  margin-top: 0.55rem;
+}
+
+.buy-box .meta-line {
+  margin: 0.55rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.related a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 860px) {
+  .landing-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .buy-box {
+    position: static;
+  }
+}
