@@ -1,0 +1,181 @@
+<html lang="es-ES"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita precio/hora autónomo 2026 España: neto deseado, horas, cuota RETA y buffer IRPF. Orientativa. No es asesoramiento fiscal.">
+  <title>Calculadora precio/hora autónomo 2026 — Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-precio-hora-autonomo-2026.html">
+  <meta property="og:title" content="Calculadora precio/hora autónomo 2026 — Kit Útil">
+  <meta property="og:description" content="Estima el €/hora a partir del neto deseado, horas/semana, cuota RETA y un buffer de IRPF. Gratuita y orientativa.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-precio-hora-autonomo-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../calculadora-autonomos-2026.html">Calculadora RETA 2026</a>
+        <a href="calculadora-precio-hora-autonomo-2026.html" aria-current="page">Precio/hora</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora precio/hora autónomo 2026</h1>
+      <p class="lede">
+        Parte del neto mensual que quieres cobrar, resta (aproxima) la cuota RETA y un buffer de IRPF,
+        y divide entre las horas facturables. Cifras orientativas para autónomos en España.
+        <strong>No es asesoramiento fiscal</strong>.
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Tus números</h2>
+        <div class="field">
+          <label for="neto">Neto deseado (€/mes)</label>
+          <input id="neto" name="neto" type="number" min="0" step="0.01" value="1800" inputmode="decimal" style="">
+          <span class="hint">Lo que quieres que te quede en el bolsillo al mes, después de cuota e IRPF aproximado.</span>
+        </div>
+        <div class="field">
+          <label for="horas">Horas facturables / semana</label>
+          <input id="horas" name="horas" type="number" min="0.5" max="80" step="0.5" value="25" inputmode="decimal" style="">
+          <span class="hint">Horas que puedes facturar de verdad (no las 40 del calendario: descuenta admin, captación y huecos).</span>
+        </div>
+        <div class="field">
+          <label for="semanas">Semanas / mes</label>
+          <input id="semanas" name="semanas" type="number" min="1" max="5" step="0.01" value="4.33" inputmode="decimal" style="">
+          <span class="hint">Por defecto 4,33 (52/12). Si facturas solo 4 semanas cerradas, pon 4.</span>
+        </div>
+        <div class="field">
+          <label for="reta">Cuota RETA (€/mes)</label>
+          <input id="reta" name="reta" type="number" min="0" step="0.01" value="200" inputmode="decimal" style="">
+          <span class="hint">Estimación editable. Usa la <a href="../calculadora-autonomos-2026.html">calculadora RETA 2026</a> para afinar el tramo.</span>
+        </div>
+        <div class="field">
+          <label for="irpf">Buffer IRPF (%)</label>
+          <input id="irpf" name="irpf" type="number" min="0" max="50" step="0.5" value="15" inputmode="decimal" style="">
+          <span class="hint">Porcentaje orientativo sobre el bruto antes de IRPF para ir apartando (pagos fraccionados / cuota líquida). No es tu tipo marginal real.</span>
+        </div>
+        <button class="btn" type="button" id="calc-btn">Calcular €/hora</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado orientativo</h2>
+        <div class="result">
+          <div class="result-box">
+            <span>€/hora recomendado</span>
+            <strong id="out-hora">21,41 €</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>Bruto necesario / mes</span><span id="out-bruto">2317,65 €</span></li>
+          <li><span>Horas / mes</span><span id="out-horas-mes">108,25 h</span></li>
+          <li><span>Cuota RETA</span><span id="out-reta">200,00 €</span></li>
+          <li><span>Buffer IRPF estimado</span><span id="out-irpf">317,65 € (15 %)</span></li>
+          <li><span>Neto objetivo</span><span id="out-neto">1800,00 €</span></li>
+        </ul>
+        <p class="hint" id="out-aviso">Orientativo: redondea al alza al cotizar (gastos, huecos, impagos). No es tu tipo IRPF real.</p>
+      </div>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso fuerte (léelo)</h2>
+      <p>
+        Esta página es una herramienta gratuita de <strong>orientación</strong>.
+        <strong>No es asesoramiento fiscal, laboral ni contable</strong>.
+        No sustituye a Importass, a la Agencia Tributaria, a un gestor ni a tu situación concreta
+        (tramo RETA, estimación directa/objetiva, retenciones de clientes, IVA, gastos deducibles,
+        tarifa plana, territorio foral, etc.). El «buffer IRPF» es un porcentaje que tú eliges para
+        apartar dinero; no calcula tu cuota líquida real. Verifica siempre con un profesional
+        antes de fijar precios o presentar modelos.
+      </p>
+    </aside>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>Kit Autónomo 2026</h2>
+        <p>
+          Calculadora RETA por tramos (Excel), libro de ingresos y gastos, calendario 303/130,
+          checklist de alta y guía. 19,00&nbsp;€. Sin plantilla de factura (Excel no vale como factura).
+        </p>
+        <p style="margin-top:0.5rem">
+          También: <a href="../calculadora-autonomos-2026.html">calculadora RETA 2026 gratis</a> ·
+          <a href="../productos/kit-autonomo-2026.html">ficha del Kit Autónomo</a>
+        </p>
+      </div>
+      <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=miguelmuletginerrr@gmail.com&amp;item_name=Kit%20Autonomo%202026&amp;amount=19.00&amp;currency_code=EUR&amp;charset=UTF-8">Pagar 19,00 € · Kit Autónomo</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España</p>
+      <p><a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a> · <a href="../index.html">Volver a la tienda</a></p>
+    </div>
+  </footer>
+
+  <script>
+  const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+  const fmtNum = n => n.toLocaleString("es-ES", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+
+  function calcular() {
+    const neto = Number(document.getElementById("neto").value);
+    const horas = Number(document.getElementById("horas").value);
+    const semanas = Number(document.getElementById("semanas").value);
+    const reta = Number(document.getElementById("reta").value);
+    const irpfPct = Number(document.getElementById("irpf").value);
+
+    if (![neto, horas, semanas, reta, irpfPct].every(n => Number.isFinite(n) && n >= 0)) {
+      document.getElementById("out-aviso").textContent = "Revisa que todos los campos sean números ≥ 0.";
+      return;
+    }
+    if (horas <= 0 || semanas <= 0) {
+      document.getElementById("out-aviso").textContent = "Horas/semana y semanas/mes deben ser mayores que 0.";
+      return;
+    }
+    if (irpfPct >= 100) {
+      document.getElementById("out-aviso").textContent = "El buffer IRPF debe ser menor que 100 %.";
+      return;
+    }
+
+    // Neto deseado = (bruto - RETA) * (1 - irpf/100)
+    // => bruto - RETA = neto / (1 - irpf/100)
+    // => bruto = neto / (1 - irpf/100) + RETA
+    const factor = 1 - (irpfPct / 100);
+    const bruto = (neto / factor) + reta;
+    const bufferIrpf = bruto - reta - neto;
+    const horasMes = horas * semanas;
+    const euroHora = bruto / horasMes;
+
+    document.getElementById("out-hora").textContent = fmt(euroHora);
+    document.getElementById("out-bruto").textContent = fmt(bruto);
+    document.getElementById("out-horas-mes").textContent = fmtNum(horasMes) + " h";
+    document.getElementById("out-reta").textContent = fmt(reta);
+    document.getElementById("out-irpf").textContent = fmt(bufferIrpf) + " (" + irpfPct + " %)";
+    document.getElementById("out-neto").textContent = fmt(neto);
+    document.getElementById("out-aviso").textContent =
+      "Orientativo: redondea al alza al cotizar (gastos, huecos, impagos). No es tu tipo IRPF real.";
+  }
+
+  ["neto", "horas", "semanas", "reta", "irpf"].forEach(id => {
+    document.getElementById(id).addEventListener("input", calcular);
+    document.getElementById(id).addEventListener("change", calcular);
+  });
+  document.getElementById("calc-btn").addEventListener("click", calcular);
+  calcular();
+  </script>
+
+
+</body></html>
