@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://molomoco-boop.github.io/kit-util/sitemap.xml
