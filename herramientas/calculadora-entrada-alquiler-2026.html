@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es-ES"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita de gastos de entrada de alquiler 2026 en España: fianza, agencia, mes por adelantado y aval. Orientativa. No es asesoramiento jurídico.">
+  <title>Calculadora gastos entrada alquiler 2026 — Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-entrada-alquiler-2026.html">
+  <meta property="og:title" content="Calculadora gastos entrada alquiler 2026 — Kit Útil">
+  <meta property="og:description" content="Estima fianza, agencia, mes por adelantado y aval para el día 1 del alquiler. Gratuita y orientativa.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-entrada-alquiler-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../calculadora-autonomos-2026.html">Calculadora RETA 2026</a>
+        <a href="calculadora-entrada-alquiler-2026.html" aria-current="page">Entrada alquiler</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora gastos entrada alquiler 2026</h1>
+      <p class="lede">
+        Estima cuánto dinero necesitas el día 1: fianza, honorarios de agencia,
+        mes por adelantado y aval u otros. Cifras orientativas para alquiler en España.
+        No sustituye el contrato ni un abogado.
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Tus números</h2>
+        <div class="field">
+          <label for="renta">Renta mensual (€)</label>
+          <input id="renta" name="renta" type="number" min="0" step="0.01" value="750" inputmode="decimal" style="">
+          <span class="hint">Importe de la renta que figura en el anuncio o el contrato.</span>
+        </div>
+        <div class="field">
+          <label for="fianza">Fianza (meses de renta)</label>
+          <input id="fianza" name="fianza" type="number" min="0" max="24" step="0.5" value="1" inputmode="decimal" style="">
+          <span class="hint">En vivienda habitual suele ser 1 mes; en temporada o locales puede ser más.</span>
+        </div>
+        <div class="field">
+          <label for="agencia">Agencia (%)</label>
+          <input id="agencia" name="agencia" type="number" min="0" max="100" step="0.1" value="100" inputmode="decimal" style="">
+          <span class="hint">Porcentaje sobre una mensualidad (p. ej. 100 = un mes de renta + IVA si aplica). Pon 0 si no hay agencia.</span>
+        </div>
+        <div class="field">
+          <label for="adelantado">Mes por adelantado</label>
+          <div class="radio-row">
+            <label><input type="radio" name="adelantado" value="si" checked="" style=""> Sí</label>
+            <label><input type="radio" name="adelantado" value="no" style=""> No</label>
+          </div>
+          <span class="hint">Primer mes de renta pagado al firmar o al entrar.</span>
+        </div>
+        <div class="field">
+          <label for="aval">Aval / otros (€)</label>
+          <input id="aval" name="aval" type="number" min="0" step="0.01" value="0" inputmode="decimal" style="">
+          <span class="hint">Depósito extra, aval bancario, seguro de impago, señal previa, etc.</span>
+        </div>
+        <button class="btn" type="button" id="calc-btn">Calcular total día 1</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Total a preparar el día 1</h2>
+        <div class="result">
+          <div class="result-box">
+            <span>Total estimado</span>
+            <strong id="out-total">2250,00 €</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>Fianza</span><span id="out-fianza">750,00 € (1 mes)</span></li>
+          <li><span>Agencia</span><span id="out-agencia">750,00 € (100 %)</span></li>
+          <li><span>Mes por adelantado</span><span id="out-adelantado">750,00 €</span></li>
+          <li><span>Aval / otros</span><span id="out-aval">0,00 €</span></li>
+        </ul>
+        <p class="hint" id="out-aviso"></p>
+      </div>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso (léelo)</h2>
+      <p>
+        Esta página es una herramienta gratuita de orientación. <strong>No es asesoramiento
+        jurídico, fiscal ni inmobiliario</strong>. No sustituye el contrato de arrendamiento,
+        la normativa autonómica ni el criterio de un profesional colegiado. Los honorarios
+        de agencia, el IVA y los límites de fianza dependen del tipo de contrato y de la
+        comunidad autónoma. Verifica siempre el documento que firmas.
+      </p>
+    </aside>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>Kit primer piso 2026</h2>
+        <p>
+          Checklists de búsqueda y contrato, calculadora Excel de entrada y gastos, y guía
+          práctica. 4,99&nbsp;€. Material informativo: no es asesoramiento jurídico.
+        </p>
+      </div>
+      <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=miguelmuletginerrr@gmail.com&amp;item_name=Kit%20Primer%20Piso%202026&amp;amount=4.99&amp;currency_code=EUR&amp;charset=UTF-8">Pagar 4,99 € · Kit primer piso</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España</p>
+      <p><a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a> · <a href="../index.html">Volver a la tienda</a></p>
+    </div>
+  </footer>
+
+  <script>
+  const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+
+  function calcular() {
+    const renta = Number(document.getElementById("renta").value);
+    const mesesFianza = Number(document.getElementById("fianza").value);
+    const pctAgencia = Number(document.getElementById("agencia").value);
+    const adelantado = document.querySelector("input[name='adelantado']:checked").value === "si";
+    const aval = Number(document.getElementById("aval").value);
+
+    if (![renta, mesesFianza, pctAgencia, aval].every(n => Number.isFinite(n) && n >= 0)) {
+      document.getElementById("out-aviso").textContent = "Revisa que todos los campos sean números ≥ 0.";
+      return;
+    }
+
+    const fianzaEur = renta * mesesFianza;
+    const agenciaEur = renta * (pctAgencia / 100);
+    const adelantadoEur = adelantado ? renta : 0;
+    const total = fianzaEur + agenciaEur + adelantadoEur + aval;
+
+    document.getElementById("out-total").textContent = fmt(total);
+    document.getElementById("out-fianza").textContent = fmt(fianzaEur) + " (" + mesesFianza + " mes" + (mesesFianza === 1 ? "" : "es") + ")";
+    document.getElementById("out-agencia").textContent = fmt(agenciaEur) + " (" + pctAgencia + " %)";
+    document.getElementById("out-adelantado").textContent = adelantado ? fmt(adelantadoEur) : "0,00 € (no)";
+    document.getElementById("out-aval").textContent = fmt(aval);
+    document.getElementById("out-aviso").textContent = "";
+  }
+
+  ["renta", "fianza", "agencia", "aval"].forEach(id => {
+    document.getElementById(id).addEventListener("input", calcular);
+    document.getElementById(id).addEventListener("change", calcular);
+  });
+  document.querySelectorAll("input[name='adelantado']").forEach(r => {
+    r.addEventListener("change", calcular);
+  });
+  document.getElementById("calc-btn").addEventListener("click", calcular);
+  calcular();
+  </script>
+
+
+</body></html>
