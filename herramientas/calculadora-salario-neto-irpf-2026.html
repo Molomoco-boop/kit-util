@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita de salario neto 2026 en España: estima cotizaciones SS (~6,5%) e IRPF en nómina a partir del bruto. Orientativa. No es AEAT ni asesoramiento fiscal.">
+  <title>Calculadora salario neto 2026 e IRPF en nómina — Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-salario-neto-irpf-2026.html">
+  <meta property="og:title" content="Calculadora salario neto 2026 e IRPF — Kit Útil">
+  <meta property="og:description" content="Pasa de bruto a neto orientativo: Seguridad Social del trabajador e IRPF simplificado 2026. Gratis. No sustituye a la nómina ni a un gestor.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-salario-neto-irpf-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="calculadora-finiquito-indemnizacion-2026.html">Finiquito 2026</a>
+        <a href="calculadora-salario-neto-irpf-2026.html" aria-current="page">Salario neto 2026</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora salario neto 2026 e IRPF en nómina</h1>
+      <p class="lede">
+        Estima cuánto te queda <strong>en neto</strong> a partir del bruto mensual:
+        cotizaciones a la Seguridad Social a cargo del trabajador e IRPF de retención
+        con una escala simplificada 2026. Cifras <strong>orientativas</strong>.
+        <strong>No es el algoritmo oficial de la AEAT</strong> ni asesoramiento fiscal.
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Tus datos</h2>
+        <div class="field">
+          <label for="bruto">Bruto mensual (€)</label>
+          <input id="bruto" name="bruto" type="number" min="0" step="0.01" value="2000" inputmode="decimal">
+          <span class="hint">Lo que pone tu contrato o nómina como bruto de esa paga (sin contar ya el neto).</span>
+        </div>
+        <div class="field">
+          <label for="pagas">Número de pagas</label>
+          <select id="pagas" name="pagas">
+            <option value="14" selected>14 pagas (extras sueltas)</option>
+            <option value="12">12 pagas (extras prorrateadas)</option>
+          </select>
+          <span class="hint">Con 14 pagas el bruto anual = mensual × 14. Con 12, el mensual suele ser más alto porque lleva prorrateo.</span>
+        </div>
+        <div class="field">
+          <label for="contrato">Tipo de contrato (SS trabajador)</label>
+          <select id="contrato" name="contrato">
+            <option value="indef" selected>Indefinido (~6,50%)</option>
+            <option value="temp">Temporal (~6,55%)</option>
+          </select>
+          <span class="hint">Contingencias comunes 4,70% + desempleo 1,55%/1,60% + FP 0,10% + MEI 0,15%. Tope base 2026: 5.101,20 €/mes.</span>
+        </div>
+        <div class="field">
+          <label for="situacion">Situación familiar (simplificada)</label>
+          <select id="situacion" name="situacion">
+            <option value="soltero" selected>Soltero/a sin hijos</option>
+            <option value="casado">Casado/a (cónyuge sin rentas)</option>
+            <option value="1hijo">1 hijo a cargo</option>
+            <option value="2hijos">2 o más hijos a cargo</option>
+          </select>
+          <span class="hint">Aproxima mínimos personales/familiares. El modelo 145 real tiene más casillas (discapacidad, ascendientes, etc.).</span>
+        </div>
+        <div class="field">
+          <label for="ccaa">Escala</label>
+          <select id="ccaa" name="ccaa">
+            <option value="estatal" selected>Estatal (retención AEAT simplificada)</option>
+          </select>
+          <span class="hint">La retención real puede variar por comunidad y por el algoritmo completo de la AEAT (ALGORITMO_2026).</span>
+        </div>
+        <button class="btn" type="button" id="calc-btn">Calcular estimación</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado orientativo</h2>
+        <div class="result">
+          <div class="result-box">
+            <span>Neto por paga (estimado)</span>
+            <strong id="out-neto-paga">—</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>Bruto anual</span><span id="out-bruto">—</span></li>
+          <li><span>Cotizaciones SS (trabajador)</span><span id="out-ss">—</span></li>
+          <li><span>IRPF retención estimado</span><span id="out-irpf">—</span></li>
+          <li><span>Tipo retención estimado</span><span id="out-tipo">—</span></li>
+          <li><span>Neto anual estimado</span><span id="out-neto">—</span></li>
+          <li><span>SS mensual (aprox.)</span><span id="out-ss-mes">—</span></li>
+        </ul>
+        <p class="hint" id="out-aviso"></p>
+      </div>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso fuerte (léelo)</h2>
+      <p>
+        Esta página es una herramienta gratuita de <strong>orientación</strong>.
+        <strong>No es asesoramiento fiscal, laboral ni financiero</strong>.
+        No sustituye a tu nómina, al programa de retenciones de la Agencia Tributaria
+        (ALGORITMO_2026), a Importass, a un gestor o a un asesor.
+        El IRPF real depende del modelo 145, de la comunidad autónoma, de pagas irregulares,
+        discapacidad, préstamos vivienda antiguos, segundos pagadores, regularizaciones y
+        de la declaración de la renta. Las cotizaciones usan un tope de base orientativo
+        (5.101,20 €/mes en 2026) y omiten matices (cuota de solidaridad en salarios muy altos,
+        contratos especiales, etc.). Verifica siempre con un profesional o con tu empresa.
+      </p>
+    </aside>
+
+    <section class="wrap" style="padding-bottom:2rem">
+      <h2>Bruto, neto, Seguridad Social e IRPF (2026)</h2>
+      <p>
+        En una nómina española el <strong>salario bruto</strong> no es lo que llega a la
+        cuenta. Del bruto salen, como mínimo, dos bloques: las
+        <strong>cotizaciones a la Seguridad Social a cargo del trabajador</strong>
+        (en torno al 6,50&nbsp;% en indefinido y 6,55&nbsp;% en temporal: contingencias
+        comunes, desempleo, formación profesional y MEI) y la
+        <strong>retención a cuenta del IRPF</strong>. Lo que queda es el
+        <strong>neto</strong>. Esta calculadora estima esos dos bloques con reglas
+        simplificadas para 2026 y te muestra un neto orientativo por paga.
+      </p>
+      <p>
+        El <strong>SMI 2026</strong> (Real Decreto 126/2026) está fijado en
+        <strong>1.221&nbsp;€ brutos/mes en 14 pagas</strong> (17.094&nbsp;€ anuales;
+        equivalente prorrateado ~1.424,50&nbsp;€ en 12). Cobrar el SMI no implica
+        automáticamente IRPF cero: depende de tu situación familiar y del algoritmo
+        oficial. Aquí, si el bruto anual queda por debajo de un umbral simplificado
+        (~15.876&nbsp;€ para soltero/a sin hijos, más holgado con hijos), la retención
+        estimada se pone a 0&nbsp;%. Eso <em>no</em> garantiza el mismo resultado en nómina.
+      </p>
+      <p>
+        La retención del IRPF <strong>no es «aplicar el tramo marginal a todo el sueldo»</strong>.
+        La AEAT calcula una cuota por tramos sobre una base reducida y divide esa cuota
+        entre la retribución para obtener un <em>tipo</em> (porcentaje truncado a dos
+        decimales). Esta herramienta imita esa idea de forma burda: resta cotizaciones y
+        2.000&nbsp;€ de otros gastos, aplica una reducción por rendimientos del trabajo
+        aproximada, resta un mínimo personal/familiar simplificado y usa la escala de
+        retención 19&nbsp;/&nbsp;24&nbsp;/&nbsp;30&nbsp;/&nbsp;37&nbsp;/&nbsp;45&nbsp;/&nbsp;47&nbsp;%.
+        No replica mínimos por discapacidad, límites del 43&nbsp;%, regularizaciones ni
+        tipos mínimos del 2&nbsp;% o 15&nbsp;% en ciertos contratos.
+      </p>
+      <p>
+        <strong>12 frente a 14 pagas</strong> cambia la sensación mensual, no el bruto
+        anual si el contrato es el mismo. Con 14 pagas cobras menos en los meses
+        «normales» y más en las extras; con 12 el mensual lleva prorrateo. Introduce
+        el bruto de <em>una</em> paga tal como lo ves y elige el número de pagas
+        correcto. Si eres autónomo, esta página no aplica: usa la
+        <a href="../calculadora-autonomos-2026.html">calculadora RETA 2026</a> y el
+        <a href="../productos/kit-autonomo-2026.html">Kit Autónomo 2026</a>.
+      </p>
+      <p>
+        Si estás ordenando el hogar, el
+        <a href="../productos/presupuesto-familiar-2026-excel.html">presupuesto familiar Excel 2026</a>
+        ayuda a encajar el neto en fijos y variables. Si cambias de empleo, mira el
+        <a href="../productos/plantilla-cv-ats-espana-2026.html">Pack CV ATS</a>, el
+        <a href="../productos/pack-entrevista-trabajo-espana-2026.html">Pack Entrevista</a>
+        y la
+        <a href="calculadora-finiquito-indemnizacion-2026.html">calculadora de finiquito</a>.
+        Hub de empleo:
+        <a href="../hub-empleo-espana-2026.html">empleo España 2026</a>.
+        Tienda:
+        <a href="../index.html">Kit Útil</a>.
+      </p>
+    </section>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>¿Quieres ordenar el neto del mes?</h2>
+        <p>
+          Presupuesto familiar 2026 en Excel: fijos, variables y colchón. 6,90&nbsp;€.
+          Pago PayPal. No es asesoramiento financiero.
+        </p>
+        <p style="margin-top:0.5rem">
+          <a href="../productos/presupuesto-familiar-2026-excel.html">Ver presupuesto Excel</a> ·
+          <a href="../hub-empleo-espana-2026.html">Hub empleo</a> ·
+          <a href="../index.html">Volver a la tienda</a>
+        </p>
+      </div>
+      <a class="btn" href="../productos/presupuesto-familiar-2026-excel.html">Ver presupuesto</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España</p>
+      <p><a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a> · <a href="../index.html">Volver a la tienda</a></p>
+    </div>
+  </footer>
+
+  <script>
+  const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+  const TOPE_BASE = 5101.20;
+
+  function escalaCuota(base) {
+    if (base <= 0) return 0;
+    if (base <= 12450) return base * 0.19;
+    if (base <= 20200) return 2365.5 + (base - 12450) * 0.24;
+    if (base <= 35200) return 4225.5 + (base - 20200) * 0.30;
+    if (base <= 60000) return 8725.5 + (base - 35200) * 0.37;
+    if (base <= 300000) return 17901.5 + (base - 60000) * 0.45;
+    return 125901.5 + (base - 300000) * 0.47;
+  }
+
+  function reduccionTrabajo(rnt) {
+    if (rnt <= 14747.5) return 7302;
+    if (rnt <= 16847.5) return Math.max(0, 7302 - 1.15646 * (rnt - 14747.5));
+    return 0;
+  }
+
+  function minimoFamiliar(sit) {
+    if (sit === "casado") return 5550 + 3400;
+    if (sit === "1hijo") return 5550 + 2400;
+    if (sit === "2hijos") return 5550 + 2400 + 2700;
+    return 5550;
+  }
+
+  function umbralExento(sit) {
+    if (sit === "casado") return 15876 + 3400;
+    if (sit === "1hijo") return 15876 + 2400;
+    if (sit === "2hijos") return 15876 + 5100;
+    return 15876;
+  }
+
+  function calcular() {
+    const brutoM = Number(document.getElementById("bruto").value);
+    const nPagas = Number(document.getElementById("pagas").value);
+    const contrato = document.getElementById("contrato").value;
+    const sit = document.getElementById("situacion").value;
+    const aviso = document.getElementById("out-aviso");
+
+    if (![brutoM, nPagas].every(n => Number.isFinite(n) && n > 0)) {
+      aviso.textContent = "Indica un bruto mensual y un número de pagas válidos.";
+      return;
+    }
+
+    const brutoAnual = brutoM * nPagas;
+    const ssRate = contrato === "temp" ? 0.0655 : 0.065;
+    const baseMes = Math.min(Math.max(brutoAnual / 12, 0), TOPE_BASE);
+    const ssAnual = baseMes * ssRate * 12;
+    const ssMes = ssAnual / 12;
+
+    let irpfAnual = 0;
+    let tipo = 0;
+    if (brutoAnual >= umbralExento(sit)) {
+      const rnt = brutoAnual - ssAnual - 2000;
+      const red = reduccionTrabajo(rnt);
+      const base = Math.max(0, rnt - red - minimoFamiliar(sit));
+      const cuota = escalaCuota(base);
+      tipo = Math.floor((cuota / brutoAnual) * 10000) / 100;
+      irpfAnual = brutoAnual * tipo / 100;
+    }
+
+    const netoAnual = brutoAnual - ssAnual - irpfAnual;
+    const netoPaga = netoAnual / nPagas;
+
+    document.getElementById("out-neto-paga").textContent = fmt(netoPaga);
+    document.getElementById("out-bruto").textContent = fmt(brutoAnual);
+    document.getElementById("out-ss").textContent = fmt(ssAnual);
+    document.getElementById("out-irpf").textContent = fmt(irpfAnual);
+    document.getElementById("out-tipo").textContent = tipo.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " %";
+    document.getElementById("out-neto").textContent = fmt(netoAnual);
+    document.getElementById("out-ss-mes").textContent = fmt(ssMes);
+    aviso.textContent = "Estimación simplificada 2026. Contrasta con tu nómina o con el programa de retenciones de la AEAT.";
+  }
+
+  document.getElementById("calc-btn").addEventListener("click", calcular);
+  ["bruto","pagas","contrato","situacion"].forEach(id => {
+    document.getElementById(id).addEventListener("change", calcular);
+    document.getElementById(id).addEventListener("input", calcular);
+  });
+  calcular();
+  </script>
+</body>
+</html>
