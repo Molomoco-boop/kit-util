@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Calculadora gratuita de finiquito e indemnización por despido 2026 en España: baja voluntaria, objetivo, improcedente y fin de temporal. Estimación orientativa. No es asesoramiento jurídico.">
+      <title>Calculadora finiquito 2026 e indemnización por despido — Kit útil</title>
+    <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-finiquito-indemnizacion-2026.html">
+    <meta property="og:title" content="Calculadora finiquito 2026 e indemnización — Kit útil">
+    <meta property="og:description" content="Estima finiquito (salario, vacaciones, pagas) e indemnización según tipo de extinción. Gratuita y orientativa. No es asesoramiento laboral.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-finiquito-indemnizacion-2026.html">
+    <meta property="og:locale" content="es_ES">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilos.css">
+  </head>
+<body>
+    <header class="site-header">
+          <div class="wrap header-inner">
+                  <a class="brand" href="../index.html">
+                            <span class="brand-mark">Kit útil</span>span>
+                            <span class="brand-tag">España · 2026</span>span>
+                  </a>a>
+                  <nav aria-label="Principal">
+                            <a href="../index.html">Tienda</a>a>
+                            <a href="../calculadora-autonomos-2026.html">Calculadora RETA 2026</a>a>
+                            <a href="calculadora-finiquito-indemnizacion-2026.html" aria-current="page">Finiquito 2026</a>a>
+                  </nav>nav>
+          </div>div>
+    </header>header>
+
+    <main>
+          <section class="wrap hero">
+                  <p class="kicker">Herramienta gratuita · no es un producto de pago</p>p>
+                  <h1>Calculadora finiquito 2026 e indemnización por despido</h1>
+                <p class="lede">
+                  Estima el finiquito (salario del mes, vacaciones no disfrutadas y parte proporcional de pagas)
+                  y, si corresponde, la indemnización según el tipo de extinción del contrato en España.
+                  Cifras <strong>orientativas</strong>. <strong>No es asesoramiento jurídico ni laboral</strong>.
+                </p>p>
+          </section>section>
+    
+        <section class="wrap calc-layout">
+              <form class="card" id="calc-form" onsubmit="return false;">
+                      <h2>Tus datos</h2>
+                      <div class="field">
+                                <label for="inicio">Fecha inicio contrato</label>label>
+                                <input id="inicio" name="inicio" type="date" value="2023-09-07">
+                                <span class="hint">Fecha de alta o de inicio de antigüedad que quieras usar (orientativa).</span>span>
+                      </div>div>
+                      <div class="field">
+                                <label for="fin">Fecha fin (efectos)</label>label>
+                                <input id="fin" name="fin" type="date" value="2026-09-07">
+                                <span class="hint">Día en que produce efectos la extincin (no necesariamente el día de la carta).</span>span>
+                      </div>div>
+                      <div class="field">
+                                <label for="salario">Salario bruto mensual (€)</label>label>
+                                <input id="salario" name="salario" type="number" min="0" step="0.01" value="2000" inputmode="decimal">
+                                <span class="hint">Bruto mensual habitual. Incluye o no las pagas según la casilla de abajo.</span>span>
+                      </div>div>
+                      <div class="field">
+                                <label for="prorrateado">
+                                            <input id="prorrateado" name="prorrateado" type="checkbox" checked>
+                                            Las pagas extras ya van prorrateadas en el salario mensual
+                                </label>label>
+                                <span class="hint">Si tu nómina ya reparte las extras en 12 meses, déjalo marcado. Si cobras pagas sueltas, desmárcalo.</span>span>
+                      </div>div>
+                      <div class="field">
+                                <label for="pagas">Nº pagas extras anuales no prorrateadas</label>label>
+                                <input id="pagas" name="pagas" type="number" min="0" max="14" step="1" value="2" inputmode="numeric">
+                                <span class="hint">Solo cuenta si no están prorrateadas (p. ej. 2 = verano y Navidad). Por defecto 2.</span>span>
+                      </div>div>
+                      <div class="field">
+                                <label for="vac-anuales">Días vacaciones anuales</label>label>
+                                <input id="vac-anuales" name="vac-anuales" type="number" min="0" max="60" step="1" value="30" inputmode="numeric">
+                                <span class="hint">Por defecto 30 días naturales (mínimo legal orientativo; el convenio puede mejorar).</span>span>
+                      </div>div>
+                      <div class="field">
+                                <label for="vac-disfrutados">Días vacaciones ya disfrutados este año</label>label>
+                                <input id="vac-disfrutados" name="vac-disfrutados" type="number" min="0" max="60" step="1" value="10" inputmode="numeric">
+                                <span class="hint">Los que ya has cogido en el año natural de la fecha fin.</span>span>
+                      </div>div>
+                      <div class="field">
+                                <label for="tipo">Tipo de extinción</label>label>
+                                <select id="tipo" name="tipo">
+                                            <option value="baja_voluntaria">Baja voluntaria (solo finiquito)</option>option>
+                                            <option value="fin_temporal">Fin contrato temporal (estimación 12 días/año art. 49.1.c ET)</option>option>
+                                            <option value="objetivo">Despido objetivo (20 días/año, tope 12 mensualidades)</option>option>
+                                            <option value="improcedente" selected>Despido improcedente (33 días/año; 45+33 si inicio antes del 12/02/2012)</option>option>
+                                            <option value="disciplinario_procedente">Despido disciplinario procedente (solo finiquito)</option>option>
+                                </select>select>
+                                <span class="hint">La calificacin real la fija un juez o un acuerdo; aquí solo aplicamos fórmulas tipificadas del ET de forma simplificada.</span>span>
+                      </div>div>
+                      <button class="btn" type="button" id="calc-btn">Calcular estimación</button>button>
+              </form>form>
+        
+              <div class="card" aria-live="polite">
+                      <h2>Resultado orientativo</h2>
+                      <div class="result">
+                                <div class="result-box">
+                                            <span>Total estimado (finiquito + indemnización)</span>
+                                            <strong id="out-total">—</strong>
+                                </div>div>
+                      </div>div>
+                      <ul class="meta-list">
+                                <li><span>Salario diario regulador</span>span><span id="out-diario">—</span>span></li>
+                                <li><span>Antigüedad (años prorrateados)</span><span id="out-antiguedad">—</span></li>
+                                <li><span>Salario días del mes</span><span id="out-sal-mes">—</span></li>
+                                <li><span>Vacaciones no disfrutadas</span>span><span id="out-vac">—</span>span></li>
+                                <li><span>Parte proporcional pagas</span><span id="out-pagas"></span></li>
+                                <li><span>Finiquito (suma)</span><span id="out-finiquito">—</span></li>
+                                <li><span>Indemnización</span>span><span id="out-indem">—</span>span></li>
+                                <li><span>Días de indemnización (cálculo)</span><span id="out-dias-indem">—</span></li>
+                      </ul>ul>
+                      <p class="hint" id="out-aviso"></p>p>
+              </div>div>
+        </section>section>
+    
+        <aside class="wrap disclaimer">
+              <h2>Aviso fuerte (léelo)</h2>
+              <p>
+                        Esta página es una herramienta gratuita de <strong>orientación</strong>.
+                        <strong>No es asesoramiento jurídico, laboral ni fiscal</strong>.
+                        No sustituye al Estatuto de los Trabajadores (ET), a tu convenio colectivo, a la nómina,
+                        a FOGASA, a Inspección de Trabajo, a un abogado laboralista ni a un sindicato.
+                        El resultado puede cambiar por salario regulador real (plus, comisiones, horas extra),
+                        prorrateo de pagas, vacaciones del convenio, contratos a tiempo parcial, ERTE,
+                        despido colectivo, acuerdos individuales, plazos de caducidad y jurisprudencia.
+                        Verifica siempre con un profesional antes de firmar, reclamar o presupuestar.
+              </p>
+        </aside>aside>
+
+          <section class="wrap" style="padding-bottom:2rem">
+                  <h2>Finiquito e indemnización: qué es cada cosa</h2>
+                  <p>
+                            Cuando termina una relación laboral en España, casi siempre hay que liquidar un
+                            <strong>finiquito</strong>: lo que la empresa te debe por trabajo ya prestado o
+                  derechos ya generados. Eso suele incluir el salario de los días del mes trabajados
+                  hasta la fecha de efectos, las <strong>vacaciones no disfrutadas</strong> (convertidas
+                  en dinero) y, si las pagas extras no van prorrateadas en la nómina mensual, la
+                  <strong>parte proporcional</strong> de esas pagas. El finiquito no es lo mismo que
+                  una indemnización: puede existir finiquito aunque no haya indemnización (por ejemplo
+                  en una baja voluntaria o en un despido disciplinario declarado procedente).
+                  </p>
+                <p>
+                          La <strong>indemnización por despido</strong>strong> es una cantidad distinta, tipificada
+                          en el ET según la causa de extinción. En un despido objetivo (art. 52/53 ET) la
+                          referencia habitual es <strong>20 días de salario por año de servicio</strong>strong>, con
+                          tope de 12 mensualidades. En un despido improcedente, para contratos iniciados a
+                          partir del 12 de febrero de 2012, la referencia tipificada es
+                          <strong>33 días por año</strong>strong> (con tope habitual de 24 mensualidades / 720 días
+                          de salario en la regla simplificada que usa esta calculadora). Si el contrato
+                          empezó <em>antes</em> de esa fecha, muchas estimaciones reparten el periodo:
+                  45 días/año hasta el 11/02/2012 y 33 días/año desde el 12/02/2012, con el tope
+                  de 720 días y la salvedad simplificada de no perder lo ya consolidado en el tramo
+                  anterior si ese tramo solo ya supera el tope. En el fin de un contrato temporal,
+                  el art. 49.1.c ET tipifica una indemnización de <strong>12 días por año</strong>
+                  (con matices según modalidad y convenio: aquí la tratamos como estimación).
+                </p>
+                <p>
+                          La antigüedad se calcula de forma orientativa en años, prorrateando los meses
+                          incompletos (meses/12). El <strong>salario diario regulador</strong>strong> en esta
+                          herramienta es el bruto anual dividido entre 365: si las pagas ya van prorrateadas,
+                          anual = mensual × 12; si no, anual = mensual × (12 + nº de pagas extras). Es una
+                          aproximación: en un procedimiento real el salario regulador puede incluir otros
+                          conceptos y promedios.
+                </p>
+                  <p>
+                            Si te entregan una carta de despido o un documento de saldo y finiquito, presta
+                            atención a dos puntos prácticos muy repetidos: el plazo de
+                            <strong>20 días hábiles</strong> para impugnarlo (caducidad; cuenta días laborables
+                  y hay particularidades de notificación) y la posibilidad de firmar
+                  <strong>«no conforme»</strong> (o con reserva) para cobrar sin renunciar a reclamar.
+                  Firmar «conforme» sin leer o sin asesorarte puede complicar una reclamación
+                  posterior. Esta calculadora no sustituye ese asesoramiento.
+                  </p>
+                <p>
+                          úsala para ordenar números antes de hablar con un abogado o con tu sindicato,
+                          o para contrastar una propuesta de la empresa. Si estás buscando nuevo empleo
+                          después de una extinción, el <a href="../productos/plantilla-cv-ats-espana-2026.html">Pack CV ATS España 2026</a>a>
+                          (plantillas Word de una columna y cartas) puede ayudarte a presentar candidaturas
+                          más limpias ante filtros ATS. Más herramientas y kits en la
+                          <a href="../index.html">tienda Kit útil</a>a>.
+                </p>
+          </section>section>
+
+          <section class="wrap cta-band">
+                  <div>
+                            <h2>¿Cambio de empleo a la vista?</h2>
+                            <p>
+                                        Pack CV ATS España 2026: 5 plantillas Word de una columna, 12 cartas y guía.
+                                        9,90&nbsp;€. Sin Europass ni foto. Orientado a filtros ATS en España.
+                            </p>p>
+                            <p style="margin-top:0.5rem">
+                                        <a href="../productos/plantilla-cv-ats-espana-2026.html">Ver Pack CV ATS</a>a> ·
+                                        <a href="../index.html">Volver a la tienda</a>a>
+                            </p>p>
+                  </div>
+                  <a class="btn" href="../productos/plantilla-cv-ats-espana-2026.html">Ver Pack CV ATS</a>a>
+          </section>section>
+    </main>
+
+    <footer class="site-footer">
+          <div class="wrap footer-inner">
+                  <p>Kit útil · Miguel Mulet Giner · España</p>p>
+                  <p><a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a>a> · <a href="../index.html">Volver a la tienda</a>a></p>p>
+          </div>
+    </footer>footer>
+
+    <script>
+        const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+        const fmtNum = n => n.toLocaleString("es-ES", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+        const REFORMA = new Date(2012, 1, 12); // 12/02/2012 local
+
+        function parseDate(id) {
+              const v = document.getElementById(id).value;
+              if (!v) return null;
+              const [y, m, d] = v.split("-").map(Number);
+              return new Date(y, m - 1, d);
+        }
+
+        function daysInMonth(d) {
+              return new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+        }
+
+        function startOfYearOrLater(fin, inicio) {
+              const soy = new Date(fin.getFullYear(), 0, 1);
+              return inicio > soy ? inicio : soy;
+        }
+
+        /** Meses completos + fracción del mes incompleto → años (meses/12). */
+        function yearsProrated(start, end) {
+              if (end < start) return 0;
+              let y = end.getFullYear() - start.getFullYear();
+              let m = end.getMonth() - start.getMonth();
+              let d = end.getDate() - start.getDate();
+              if (d < 0) {
+                      m -= 1;
+                      const prev = new Date(end.getFullYear(), end.getMonth(), 0).getDate();
+                      d += prev;
+              }
+              if (m < 0) {
+                      y -= 1;
+                      m += 12;
+              }
+              const months = y * 12 + m + (d > 0 ? d / daysInMonth(end) : 0);
+              return Math.max(0, months / 12);
+        }
+
+        function daysBetweenInclusive(a, b) {
+              const ms = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate()) -
+                               Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+              return Math.floor(ms / 86400000) + 1;
+        }
+
+        function dayOfYear(d) {
+              const start = new Date(d.getFullYear(), 0, 0);
+              const diff = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) -
+                                 Date.UTC(start.getFullYear(), start.getMonth(), start.getDate());
+              return Math.floor(diff / 86400000);
+        }
+
+        function isLeap(y) {
+              return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+        }
+
+        function calcular() {
+              const inicio = parseDate("inicio");
+              const fin = parseDate("fin");
+              const salario = Number(document.getElementById("salario").value);
+              const prorrateado = document.getElementById("prorrateado").checked;
+              const nPagas = Number(document.getElementById("pagas").value);
+              const vacAnuales = Number(document.getElementById("vac-anuales").value);
+              const vacDisfrutados = Number(document.getElementById("vac-disfrutados").value);
+              const tipo = document.getElementById("tipo").value;
+              const aviso = document.getElementById("out-aviso");
+
+              if (!inicio || !fin) {
+                      aviso.textContent = "Indica fecha de inicio y fecha de fin.";
+                      return;
+              }
+              if (fin < inicio) {
+                      aviso.textContent = "La fecha fin no puede ser anterior al inicio del contrato.";
+                      return;
+              }
+              if (![salario, nPagas, vacAnuales, vacDisfrutados].every(n => Number.isFinite(n) && n >= 0)) {
+                      aviso.textContent = "Revisa que salario, pagas y vacaciones sean números ≥ 0.";
+                      return;
+              }
+
+              const brutoAnual = prorrateado ? salario * 12 : salario * (12 + nPagas);
+              const salarioDiario = brutoAnual / 365;
+
+              // Finiquito: salario días del mes
+              const dia = fin.getDate();
+              const dim = daysInMonth(fin);
+              const salMes = (dia / dim) * salario;
+
+              // Vacaciones no disfrutadas (año natural de la fecha fin)
+              const desdeVac = startOfYearOrLater(fin, inicio);
+              const diasAno = isLeap(fin.getFullYear()) ? 366 : 365;
+              const diasTrabAno = daysBetweenInclusive(desdeVac, fin);
+              const vacGeneradas = vacAnuales * (diasTrabAno / diasAno);
+              const vacPendientes = Math.max(0, vacGeneradas - vacDisfrutados);
+              const salVac = vacPendientes * salarioDiario;
+
+              // Parte proporcional pagas (solo si no prorrateadas)
+              let salPagas = 0;
+              if (!prorrateado && nPagas > 0) {
+                      salPagas = salario * nPagas * (diasTrabAno / diasAno);
+              }
+
+              const finiquito = salMes + salVac + salPagas;
+
+              // Indemnización
+              let indem = 0;
+              let diasIndem = 0;
+              let notaIndem = "";
+
+              if (tipo === "baja_voluntaria" || tipo === "disciplinario_procedente") {
+                      indem = 0;
+                      diasIndem = 0;
+                      notaIndem = tipo === "baja_voluntaria"
+                        ? "Baja voluntaria: no hay indemnización tipificada; solo finiquito."
+                                : "Despido disciplinario procedente (estimación): indemnización 0; solo finiquito.";
+              } else if (tipo === "fin_temporal") {
+                      const anios = yearsProrated(inicio, fin);
+                      diasIndem = 12 * anios;
+                      indem = diasIndem * salarioDiario;
+                      notaIndem = "Estimación fin de temporal: 12 das/año (art. 49.1.c ET tipificado). Convenio o modalidad pueden variar.";
+              } else if (tipo === "objetivo") {
+                      const anios = yearsProrated(inicio, fin);
+                      diasIndem = 20 * anios;
+                      indem = diasIndem * salarioDiario;
+                      const tope = 12 * salario; // 12 mensualidades (aprox. salario mensual usado)
+                      if (indem > tope) {
+                                indem = tope;
+                                notaIndem = "Despido objetivo: 20 días/año con tope de 12 mensualidades (aplicado).";
+                      } else {
+                                notaIndem = "Despido objetivo: 20 días de salario por ao de servicio (tope 12 mensualidades).";
+                      }
+              } else if (tipo === "improcedente") {
+                      if (inicio >= REFORMA) {
+                                const anios = yearsProrated(inicio, fin);
+                                diasIndem = 33 * anios;
+                                const topeDias = 720;
+                                if (diasIndem > topeDias) diasIndem = topeDias;
+                                indem = diasIndem * salarioDiario;
+                                notaIndem = "Improcedente (inicio ≥ 12/02/2012): 33 días/año, tope orientativo 720 días.";
+                      } else {
+                                // Split 45 + 33
+                                const finPre = new Date(2012, 1, 11); // 11/02/2012
+                                const iniPost = REFORMA;
+                                const aniosPre = yearsProrated(inicio, finPre < fin ? finPre : fin);
+                                let diasPre = 45 * aniosPre;
+                                let diasPost = 0;
+                                if (fin >= iniPost) {
+                                            const aniosPost = yearsProrated(iniPost, fin);
+                                            diasPost = 33 * aniosPost;
+                                }
+                                // Tope 720; si el tramo pre ya supera 720, se mantiene el pre y no se suma post
+                                if (diasPre >= 720) {
+                                            diasIndem = diasPre;
+                                            notaIndem = "Improcedente (inicio < 12/02/2012): tramo 45 días/año ya ≥ 720; se mantiene ese tramo (regla simplificada).";
+                                } else {
+                                            diasIndem = diasPre + diasPost;
+                                            if (diasIndem > 720) diasIndem = 720;
+                                            notaIndem = "Improcedente (inicio < 12/02/2012): 45 días/año hasta 11/02/2012 + 33 desde 12/02/2012; tope orientativo 720 días.";
+                                }
+                                indem = diasIndem * salarioDiario;
+                      }
+              }
+
+              const total = finiquito + indem;
+              const aniosTot = yearsProrated(inicio, fin);
+
+              document.getElementById("out-total").textContent = fmt(total);
+              document.getElementById("out-diario").textContent = fmt(salarioDiario);
+              document.getElementById("out-antiguedad").textContent = fmtNum(aniosTot) + " años";
+              document.getElementById("out-sal-mes").textContent = fmt(salMes);
+              document.getElementById("out-vac").textContent = fmt(salVac) + " (" + fmtNum(vacPendientes) + " días)";
+              document.getElementById("out-pagas").textContent = prorrateado ? "0,00 € (prorrateadas)" : fmt(salPagas);
+              document.getElementById("out-finiquito").textContent = fmt(finiquito);
+              document.getElementById("out-indem").textContent = fmt(indem);
+              document.getElementById("out-dias-indem").textContent = fmtNum(diasIndem) + " días";
+              aviso.textContent = "Estimación orientativa. " + notaIndem + " ET / convenio / FOGASA pueden cambiar el resultado. Consulta abogado o sindicato.";
+        }
+
+        ["inicio", "fin", "salario", "prorrateado", "pagas", "vac-anuales", "vac-disfrutados", "tipo"].forEach(id => {
+              const el = document.getElementById(id);
+              el.addEventListener("input", calcular);
+              el.addEventListener("change", calcular);
+        });
+        document.getElementById("calc-btn").addEventListener("click", calcular);
+        calcular();
+    </script>
+</body>
+</html>html>
+    </script>
+                  </div>
+                </p></strong></strong>
+                  </p>
+                </p></strong></em>
+                </p></strong></strong>
+                  </p>
+              </p></span></li></li></span></span></li></li></span></span></li></li></span></strong></strong></h1>
+    </main>
+</body></title>
+  </head>
