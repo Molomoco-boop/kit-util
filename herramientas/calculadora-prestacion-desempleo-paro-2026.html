@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita del paro 2026 en España: estima la prestación contributiva por desempleo (SEPE) con base reguladora, 70%/60%, topes IPREM y duración según días cotizados. Orientativa. No es el SEPE.">
+  <title>Calculadora paro 2026 — prestación desempleo SEPE | Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-prestacion-desempleo-paro-2026.html">
+  <meta property="og:title" content="Calculadora paro 2026 — prestación desempleo | Kit Útil">
+  <meta property="og:description" content="Estima cuánto cobrarías de paro contributivo en 2026: 70% / 60%, topes IPREM y duración. Gratis. No sustituye al SEPE.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-prestacion-desempleo-paro-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="calculadora-finiquito-indemnizacion-2026.html">Finiquito 2026</a>
+        <a href="calculadora-prestacion-desempleo-paro-2026.html" aria-current="page">Paro 2026</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora del paro 2026 (prestación contributiva)</h1>
+      <p class="lede">
+        Estima la <strong>prestación contributiva por desempleo</strong> en España:
+        base reguladora (media de bases de los últimos 180 días),
+        <strong>70&nbsp;%</strong> los primeros 180 días y <strong>60&nbsp;%</strong> después,
+        topes mínimo/máximo según IPREM 2026 e hijos a cargo, y duración según días cotizados.
+        Cifras <strong>orientativas</strong>.
+        <strong>No es el cálculo oficial del SEPE</strong> ni asesoramiento laboral.
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Tus datos</h2>
+        <div class="field">
+          <label for="base">Base reguladora mensual (€)</label>
+          <input id="base" name="base" type="number" min="0" step="0.01" value="2000" inputmode="decimal">
+          <span class="hint">Media de tus bases de cotización por desempleo de los últimos 180 días. Si no la tienes, una aproximación es tu bruto mensual con extras prorrateadas (tope base 2026: 5.101,20 €/mes).</span>
+        </div>
+        <div class="field">
+          <label for="dias">Días cotizados (últimos 6 años)</label>
+          <input id="dias" name="dias" type="number" min="0" step="1" value="720" inputmode="numeric">
+          <span class="hint">Mínimo 360 días para prestación contributiva. La duración se reconoce por tramos (hasta 720 días / 24 meses).</span>
+        </div>
+        <div class="field">
+          <label for="hijos">Hijos a cargo</label>
+          <select id="hijos" name="hijos">
+            <option value="0" selected>Ninguno</option>
+            <option value="1">1 hijo</option>
+            <option value="2">2 o más hijos</option>
+          </select>
+          <span class="hint">Afecta a los topes mínimo y máximo (IPREM + 1/6). El SEPE tiene reglas propias de «hijo a cargo».</span>
+        </div>
+        <button class="btn" type="button" id="calc-btn">Calcular estimación</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado orientativo</h2>
+        <div class="result">
+          <div class="result-box">
+            <span>Cuantía bruta primeros 180 días</span>
+            <strong id="out-70">—</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>Base reguladora (acotada)</span><span id="out-base">—</span></li>
+          <li><span>70% bruto (antes de tope)</span><span id="out-70-raw">—</span></li>
+          <li><span>60% bruto (antes de tope)</span><span id="out-60-raw">—</span></li>
+          <li><span>Cuantía bruta desde día 181</span><span id="out-60">—</span></li>
+          <li><span>Tope mínimo / máximo</span><span id="out-topes">—</span></li>
+          <li><span>Duración reconocida</span><span id="out-dur">—</span></li>
+          <li><span>Total bruto estimado (periodo)</span><span id="out-total">—</span></li>
+        </ul>
+        <p class="hint" id="out-aviso"></p>
+      </div>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso fuerte (léelo)</h2>
+      <p>
+        Esta página es una herramienta gratuita de <strong>orientación</strong>.
+        <strong>No es el SEPE, Importass ni un abogado laboralista</strong>.
+        No decide si tienes derecho a prestación, no calcula el subsidio asistencial
+        completo, ni aplica reducciones, plurempleo, ERTE, fijo-discontinuo, parcialidad,
+        capitalización, compatibilidades o IRPF de la prestación.
+        Los topes usan IPREM mensual 2026 = <strong>600&nbsp;€</strong> incrementado en
+        una sexta parte (700&nbsp;€) y los porcentajes habituales (mín. 80%/107%,
+        máx. 175%/200%/225%). Contrasta siempre en la sede electrónica del SEPE
+        o con un profesional antes de tomar decisiones.
+      </p>
+    </aside>
+
+    <section class="wrap" style="padding-bottom:2rem">
+      <h2>Cómo se calcula el paro contributivo en 2026</h2>
+      <p>
+        La <strong>base reguladora</strong> es la media de las bases de cotización
+        por desempleo de los <strong>últimos 180 días</strong> trabajados.
+        Sobre esa base se aplica el <strong>70&nbsp;%</strong> durante los primeros
+        180 días de prestación y el <strong>60&nbsp;%</strong> a partir del día 181
+        (cambio vigente desde noviembre de 2024). El resultado se encaja entre un
+        <strong>mínimo</strong> y un <strong>máximo</strong> que dependen del IPREM
+        y de si tienes hijos a cargo.
+      </p>
+      <p>
+        Con IPREM 2026 congelado en 600&nbsp;€/mes, los topes orientativos mensuales
+        (IPREM + 1/6) son: sin hijos <strong>560–1.225&nbsp;€</strong>; con 1 hijo
+        <strong>749–1.400&nbsp;€</strong>; con 2 o más <strong>749–1.575&nbsp;€</strong>.
+        Muchas bases medias-altas topan en el máximo aunque el 70&nbsp;% sea superior.
+      </p>
+      <p>
+        La <strong>duración</strong> depende de los días cotizados en los últimos
+        6 años (tabla SEPE por tramos de 180 días, desde 120 hasta 720 días de
+        prestación). Menos de 360 días cotizados: no hay contributiva; puede haber
+        subsidio con otras reglas (esta calculadora no lo cubre).
+      </p>
+      <p>
+        Si acabas de salir de un contrato, mira también la
+        <a href="calculadora-finiquito-indemnizacion-2026.html">calculadora de finiquito e indemnización 2026</a>
+        y la
+        <a href="calculadora-salario-neto-irpf-2026.html">calculadora de salario neto / IRPF</a>.
+        Si buscas el siguiente empleo:
+        <a href="../productos/plantilla-cv-ats-espana-2026.html">Pack CV ATS</a> y
+        <a href="../productos/pack-entrevista-trabajo-espana-2026.html">Pack Entrevista</a>.
+        Hub:
+        <a href="../hub-empleo-espana-2026.html">empleo España 2026</a>.
+      </p>
+    </section>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>¿Buscas el siguiente contrato?</h2>
+        <p>
+          Pack CV ATS 9,90&nbsp;€ y Pack Entrevista 7,90&nbsp;€. Pago PayPal.
+          No garantizan plaza ni entrevista.
+        </p>
+        <p style="margin-top:0.5rem">
+          <a href="../productos/plantilla-cv-ats-espana-2026.html">Ver Pack CV</a> ·
+          <a href="../productos/pack-entrevista-trabajo-espana-2026.html">Ver Pack Entrevista</a> ·
+          <a href="../hub-empleo-espana-2026.html">Hub empleo</a>
+        </p>
+      </div>
+      <a class="btn" href="../productos/plantilla-cv-ats-espana-2026.html">Ver Pack CV</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España</p>
+      <p><a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a> · <a href="../index.html">Volver a la tienda</a></p>
+    </div>
+  </footer>
+
+  <script>
+  const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+  const TOPE_BASE = 5101.20;
+  const IPREM6 = 700; // 600 + 600/6
+
+  function topes(hijos) {
+    const h = Number(hijos);
+    if (h >= 2) return { min: IPREM6 * 1.07, max: IPREM6 * 2.25 };
+    if (h === 1) return { min: IPREM6 * 1.07, max: IPREM6 * 2.00 };
+    return { min: IPREM6 * 0.80, max: IPREM6 * 1.75 };
+  }
+
+  function duracionDias(cotizados) {
+    const d = Number(cotizados);
+    if (d < 360) return 0;
+    if (d < 540) return 120;
+    if (d < 720) return 180;
+    if (d < 900) return 240;
+    if (d < 1080) return 300;
+    if (d < 1260) return 360;
+    if (d < 1440) return 420;
+    if (d < 1620) return 480;
+    if (d < 1800) return 540;
+    if (d < 1980) return 600;
+    if (d < 2160) return 660;
+    return 720;
+  }
+
+  function clamp(v, min, max) {
+    return Math.min(Math.max(v, min), max);
+  }
+
+  function calcular() {
+    const baseIn = Number(document.getElementById("base").value);
+    const dias = Number(document.getElementById("dias").value);
+    const hijos = document.getElementById("hijos").value;
+    const aviso = document.getElementById("out-aviso");
+
+    if (!Number.isFinite(baseIn) || baseIn <= 0) {
+      aviso.textContent = "Indica una base reguladora mensual válida.";
+      return;
+    }
+    if (!Number.isFinite(dias) || dias < 0) {
+      aviso.textContent = "Indica los días cotizados (número ≥ 0).";
+      return;
+    }
+
+    const base = Math.min(baseIn, TOPE_BASE);
+    const t = topes(hijos);
+    const raw70 = base * 0.70;
+    const raw60 = base * 0.60;
+    const amt70 = clamp(raw70, t.min, t.max);
+    const amt60 = clamp(raw60, t.min, t.max);
+    const dur = duracionDias(dias);
+
+    let total = 0;
+    if (dur > 0) {
+      const d70 = Math.min(dur, 180);
+      const d60 = Math.max(0, dur - 180);
+      total = (amt70 / 30) * d70 + (amt60 / 30) * d60;
+    }
+
+    document.getElementById("out-70").textContent = dur > 0 ? fmt(amt70) : "Sin derecho";
+    document.getElementById("out-base").textContent = fmt(base);
+    document.getElementById("out-70-raw").textContent = fmt(raw70);
+    document.getElementById("out-60-raw").textContent = fmt(raw60);
+    document.getElementById("out-60").textContent = dur > 0 ? fmt(amt60) : "—";
+    document.getElementById("out-topes").textContent = fmt(t.min) + " / " + fmt(t.max);
+    document.getElementById("out-dur").textContent = dur > 0
+      ? (dur + " días (" + (dur / 30).toLocaleString("es-ES", { maximumFractionDigits: 1 }) + " meses)")
+      : "0 (menos de 360 días cotizados)";
+    document.getElementById("out-total").textContent = dur > 0 ? fmt(total) : "—";
+
+    if (dur === 0) {
+      aviso.textContent = "Con menos de 360 días cotizados no hay prestación contributiva. Puede existir subsidio con otras reglas (no calculado aquí). Verifica en el SEPE.";
+    } else if (baseIn > TOPE_BASE) {
+      aviso.textContent = "Base acotada al tope de cotización 2026 (5.101,20 €/mes). Estimación orientativa; contrastar en el SEPE.";
+    } else {
+      aviso.textContent = "Estimación simplificada 2026 (IPREM 600 €). Contrastar siempre en la sede del SEPE antes de decidir.";
+    }
+  }
+
+  document.getElementById("calc-btn").addEventListener("click", calcular);
+  ["base","dias","hijos"].forEach(id => {
+    document.getElementById(id).addEventListener("change", calcular);
+    document.getElementById(id).addEventListener("input", calcular);
+  });
+  calcular();
+  </script>
+</body>
+</html>
