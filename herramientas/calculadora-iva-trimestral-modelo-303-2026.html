@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita IVA trimestral 2026 España (modelo 303 orientativo): IVA repercutido, soportado, resultado a ingresar o compensar. No es asesoramiento fiscal.">
+  <title>Calculadora IVA trimestral 2026 (modelo 303) — Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-iva-trimestral-modelo-303-2026.html">
+  <meta property="og:title" content="Calculadora IVA trimestral 2026 (modelo 303) — Kit Útil">
+  <meta property="og:description" content="Estima IVA repercutido, soportado y el resultado trimestral orientativo. Gratis. No sustituye a la AEAT ni a un gestor.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-iva-trimestral-modelo-303-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora IVA trimestral 2026 (modelo 303)",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "inLanguage": "es-ES",
+    "url": "https://molomoco-boop.github.io/kit-util/herramientas/calculadora-iva-trimestral-modelo-303-2026.html",
+    "description": "Herramienta gratuita orientativa de IVA trimestral para autónomos en España. No es asesoramiento fiscal."
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../calculadora-autonomos-2026.html">Calculadora RETA 2026</a>
+        <a href="calculadora-iva-trimestral-modelo-303-2026.html" aria-current="page">IVA trimestral</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora IVA trimestral 2026 (modelo 303)</h1>
+      <p class="lede">
+        Estima el IVA repercutido de tus ventas, resta el IVA soportado deducible de tus compras
+        y obtiene el resultado orientativo del trimestre (a ingresar o a compensar).
+        Pensada para autónomos en régimen general en España.
+        <strong>No es el modelo 303 de la AEAT ni asesoramiento fiscal</strong>.
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Datos del trimestre</h2>
+        <div class="field">
+          <label for="base-ventas">Base imponible de ventas (€)</label>
+          <input id="base-ventas" name="base-ventas" type="number" min="0" step="0.01" value="6000" inputmode="decimal">
+          <span class="hint">Suma de bases sin IVA de facturas emitidas en el trimestre (régimen general).</span>
+        </div>
+        <div class="field">
+          <label for="tipo-repercutido">Tipo IVA repercutido (%)</label>
+          <select id="tipo-repercutido" name="tipo-repercutido">
+            <option value="21" selected>21 % general</option>
+            <option value="10">10 % reducido</option>
+            <option value="4">4 % superreducido</option>
+            <option value="0">0 % (exento / no sujeto — solo para comparar)</option>
+          </select>
+          <span class="hint">Si mezclas tipos, calcula por separado o usa un tipo medio ponderado a mano.</span>
+        </div>
+        <div class="field">
+          <label for="iva-soportado">IVA soportado deducible (€)</label>
+          <input id="iva-soportado" name="iva-soportado" type="number" min="0" step="0.01" value="420" inputmode="decimal">
+          <span class="hint">IVA de facturas recibidas que puedes deducir este trimestre. Si prefieres, rellena la base de compras abajo.</span>
+        </div>
+        <div class="field">
+          <label for="base-compras">Base imponible de compras (€) — opcional</label>
+          <input id="base-compras" name="base-compras" type="number" min="0" step="0.01" value="" inputmode="decimal" placeholder="Vacío = usar IVA soportado directo">
+          <span class="hint">Si lo rellenas, se calcula IVA soportado = base × tipo de abajo (y sustituye el campo anterior).</span>
+        </div>
+        <div class="field">
+          <label for="tipo-soportado">Tipo IVA compras (%)</label>
+          <select id="tipo-soportado" name="tipo-soportado">
+            <option value="21" selected>21 % general</option>
+            <option value="10">10 % reducido</option>
+            <option value="4">4 % superreducido</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="compensar">IVA a compensar de trimestres anteriores (€)</label>
+          <input id="compensar" name="compensar" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+          <span class="hint">Saldo a tu favor pendiente de compensar (casilla orientativa). 0 si no tienes.</span>
+        </div>
+        <button class="btn" type="button" id="calc-btn">Calcular resultado</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado orientativo</h2>
+        <div class="result">
+          <div class="result-box">
+            <span id="out-label">Resultado del trimestre</span>
+            <strong id="out-resultado">—</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>IVA repercutido</span><span id="out-repercutido">—</span></li>
+          <li><span>IVA soportado usado</span><span id="out-soportado">—</span></li>
+          <li><span>Diferencia bruta</span><span id="out-diff">—</span></li>
+          <li><span>Compensación previa</span><span id="out-comp">—</span></li>
+          <li><span>Base ventas</span><span id="out-base">—</span></li>
+        </ul>
+        <p class="hint" id="out-aviso"></p>
+        <p class="hint">
+          Plazos habituales del 303 (orientativos): 1T hasta ~20 abr · 2T ~20 jul · 3T ~20 oct · 4T ~30 ene.
+          Comprueba siempre el calendario oficial de la AEAT.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap note">
+      <h2>Cómo usarla bien</h2>
+      <ol>
+        <li>Suma solo bases de operaciones sujetas y no exentas que debas declarar este trimestre.</li>
+        <li>El IVA soportado solo cuenta si es deducible (actividad, factura válida, prorrata si aplica).</li>
+        <li>Territorios forales, recargo de equivalencia, inversión del sujeto pasivo o exportaciones no están modelados aquí.</li>
+        <li>Para el alta RETA y el calendario 303/130 completo, usa el Kit Autónomo o la calculadora RETA gratis.</li>
+      </ol>
+      <p>
+        Relacionado:
+        <a href="../calculadora-autonomos-2026.html">calculadora RETA 2026</a> ·
+        <a href="calculadora-precio-hora-autonomo-2026.html">precio/hora autónomo</a> ·
+        <a href="../productos/kit-autonomo-2026.html">ficha Kit Autónomo</a>
+      </p>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso fuerte (léelo)</h2>
+      <p>
+        Esta página es una herramienta gratuita de <strong>orientación</strong>.
+        <strong>No es asesoramiento fiscal ni contable</strong> y <strong>no genera ni presenta el modelo 303</strong>.
+        No sustituye a la Agencia Tributaria, a Importass, a un gestor ni a tu software de facturación.
+        No contempla prorrata, sectores diferenciados, recargo de equivalencia, IGIC/IPSI, operaciones
+        intracomunitarias, inversión del sujeto pasivo ni criterios de caja. Verifica siempre con un
+        profesional antes de ingresar, compensar o declarar.
+      </p>
+    </aside>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>Kit Autónomo 2026</h2>
+        <p>
+          Calculadora RETA por tramos (Excel), libro de ingresos y gastos, calendario 303/130,
+          checklist de alta y guía. 19,00&nbsp;€. Sin plantilla de factura (Excel no vale como factura / Verifactu).
+        </p>
+        <p style="margin-top:0.5rem">
+          También: <a href="../calculadora-autonomos-2026.html">calculadora RETA 2026 gratis</a> ·
+          <a href="calculadora-precio-hora-autonomo-2026.html">precio/hora autónomo</a>
+        </p>
+      </div>
+      <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=miguelmuletginerrr@gmail.com&amp;item_name=Kit%20Autonomo%202026&amp;amount=19.00&amp;currency_code=EUR&amp;charset=UTF-8">Pagar 19,00 € · Kit Autónomo</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España</p>
+      <p><a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a> · <a href="../index.html">Volver a la tienda</a></p>
+    </div>
+  </footer>
+
+  <script>
+  const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+
+  function calcular() {
+    const baseVentas = Number(document.getElementById("base-ventas").value);
+    const tipoRep = Number(document.getElementById("tipo-repercutido").value);
+    const ivaSoportadoDirecto = Number(document.getElementById("iva-soportado").value);
+    const baseComprasRaw = document.getElementById("base-compras").value;
+    const baseCompras = baseComprasRaw === "" ? null : Number(baseComprasRaw);
+    const tipoSop = Number(document.getElementById("tipo-soportado").value);
+    const compensar = Number(document.getElementById("compensar").value);
+
+    if (![baseVentas, tipoRep, ivaSoportadoDirecto, compensar].every(n => Number.isFinite(n) && n >= 0)) {
+      document.getElementById("out-aviso").textContent = "Revisa que los campos numéricos sean ≥ 0.";
+      return;
+    }
+    if (baseCompras !== null && !(Number.isFinite(baseCompras) && baseCompras >= 0)) {
+      document.getElementById("out-aviso").textContent = "La base de compras, si la usas, debe ser ≥ 0.";
+      return;
+    }
+
+    const ivaRepercutido = baseVentas * (tipoRep / 100);
+    let ivaSoportado = ivaSoportadoDirecto;
+    if (baseCompras !== null) {
+      ivaSoportado = baseCompras * (tipoSop / 100);
+      document.getElementById("iva-soportado").value = ivaSoportado.toFixed(2);
+    }
+
+    const diff = ivaRepercutido - ivaSoportado;
+    const resultado = diff - compensar;
+
+    document.getElementById("out-repercutido").textContent = fmt(ivaRepercutido);
+    document.getElementById("out-soportado").textContent = fmt(ivaSoportado);
+    document.getElementById("out-diff").textContent = fmt(diff);
+    document.getElementById("out-comp").textContent = fmt(compensar);
+    document.getElementById("out-base").textContent = fmt(baseVentas);
+
+    const label = document.getElementById("out-label");
+    const out = document.getElementById("out-resultado");
+    if (resultado > 0.005) {
+      label.textContent = "A ingresar (orientativo)";
+      out.textContent = fmt(resultado);
+      document.getElementById("out-aviso").textContent =
+        "Saldo a favor de Hacienda en este cálculo. Confirma casillas, prorrata y plazos en la AEAT antes de pagar.";
+    } else if (resultado < -0.005) {
+      label.textContent = "A compensar / a devolver (orientativo)";
+      out.textContent = fmt(Math.abs(resultado));
+      document.getElementById("out-aviso").textContent =
+        "Saldo a tu favor en este cálculo. Compensar o solicitar devolución depende de tu situación y del 303 real.";
+    } else {
+      label.textContent = "Resultado del trimestre";
+      out.textContent = fmt(0);
+      document.getElementById("out-aviso").textContent = "Resultado ~0 en este cálculo orientativo.";
+    }
+  }
+
+  ["base-ventas", "tipo-repercutido", "iva-soportado", "base-compras", "tipo-soportado", "compensar"].forEach(id => {
+    document.getElementById(id).addEventListener("input", calcular);
+    document.getElementById(id).addEventListener("change", calcular);
+  });
+  document.getElementById("calc-btn").addEventListener("click", calcular);
+  calcular();
+  </script>
+</body>
+</html>
