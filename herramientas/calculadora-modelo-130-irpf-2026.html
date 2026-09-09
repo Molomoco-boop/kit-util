@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita modelo 130 IRPF 2026 España (pago fraccionado autónomos en estimación directa): 20 % del neto o 2 % agrario. Orientativa. No es asesoramiento fiscal.">
+  <title>Calculadora modelo 130 IRPF 2026 — Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-modelo-130-irpf-2026.html">
+  <meta property="og:title" content="Calculadora modelo 130 IRPF 2026 — Kit Útil">
+  <meta property="og:description" content="Estima el pago fraccionado de IRPF (modelo 130) en estimación directa: 20 % del rendimiento neto o 2 % agrario. Gratis. No sustituye a la AEAT ni a un gestor.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-modelo-130-irpf-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora modelo 130 IRPF 2026",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "inLanguage": "es-ES",
+    "url": "https://molomoco-boop.github.io/kit-util/herramientas/calculadora-modelo-130-irpf-2026.html",
+    "description": "Herramienta gratuita orientativa del pago fraccionado IRPF (modelo 130) para autónomos en estimación directa en España. No es asesoramiento fiscal."
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../calculadora-autonomos-2026.html">Calculadora RETA 2026</a>
+        <a href="calculadora-iva-trimestral-modelo-303-2026.html">IVA trimestral</a>
+        <a href="calculadora-modelo-130-irpf-2026.html" aria-current="page">Modelo 130</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora modelo 130 IRPF 2026</h1>
+      <p class="lede">
+        Estima el pago fraccionado de IRPF de autónomos en estimación directa:
+        el 20&nbsp;% del rendimiento neto acumulado, o el 2&nbsp;% de los ingresos del trimestre
+        en actividades agrarias. Resta pagos previos, retenciones y la reducción de la casilla 13.
+        Pensada para autónomos en territorio común en España.
+        <strong>No es el modelo 130 de la AEAT ni asesoramiento fiscal</strong>.
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Datos del pago fraccionado</h2>
+        <div class="field">
+          <label id="label-modo">Modo de cálculo</label>
+          <div class="radio-row" role="radiogroup" aria-labelledby="label-modo">
+            <label><input type="radio" name="modo" value="directa" checked> Estimación directa (20&nbsp;%)</label>
+            <label><input type="radio" name="modo" value="agraria"> Actividad agraria (2&nbsp;%)</label>
+          </div>
+          <span class="hint">En estimación directa el 20&nbsp;% se aplica al neto acumulado del ejercicio. En agraria el 2&nbsp;% se aplica a los ingresos del trimestre (los gastos no entran en el porcentaje).</span>
+        </div>
+        <div class="field">
+          <label for="ingresos" id="label-ingresos">Ingresos acumulados del ejercicio (€)</label>
+          <input id="ingresos" name="ingresos" type="number" min="0" step="0.01" value="9000" inputmode="decimal">
+          <span class="hint" id="hint-ingresos">Suma de ingresos computables desde el 1 de enero hasta el final del trimestre (no el IVA).</span>
+        </div>
+        <div class="field" id="gastos-field">
+          <label for="gastos">Gastos acumulados del ejercicio (€)</label>
+          <input id="gastos" name="gastos" type="number" min="0" step="0.01" value="2500" inputmode="decimal">
+          <span class="hint" id="hint-gastos">Gastos deducibles acumulados en el mismo periodo. El neto no baja de 0.</span>
+        </div>
+        <div class="field">
+          <label for="pagos">Pagos fraccionados previos del ejercicio (€)</label>
+          <input id="pagos" name="pagos" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+          <span class="hint">Lo ya ingresado en modelos 130 de trimestres anteriores de este año. 0 en el 1T.</span>
+        </div>
+        <div class="field">
+          <label for="retenciones">Retenciones e ingresos a cuenta soportados (€)</label>
+          <input id="retenciones" name="retenciones" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+          <span class="hint">Retenciones acumuladas que te han practicado (facturas con IRPF, etc.).</span>
+        </div>
+        <div class="field">
+          <label for="reduccion">Reducción casilla 13 (€)</label>
+          <input id="reduccion" name="reduccion" type="number" min="0" max="100" step="0.01" value="0" inputmode="decimal">
+          <span class="hint">Opcional. Entre 0 y 100&nbsp;€ (tope orientativo de esta herramienta). 0 si no aplica.</span>
+        </div>
+        <div class="field">
+          <label>
+            <input type="checkbox" id="exento70" name="exento70">
+            Exento por retención ≥ 70&nbsp;% de los ingresos
+          </label>
+          <span class="hint">Si al menos el 70&nbsp;% de tus ingresos llevan retención, es posible que no tengas que presentar el 130. Márcalo solo si te aplica; el resultado se mostrará a 0.</span>
+        </div>
+        <button class="btn" type="button" id="calc-btn">Calcular pago fraccionado</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado orientativo</h2>
+        <div class="result">
+          <div class="result-box">
+            <span id="out-label">A ingresar (orientativo)</span>
+            <strong id="out-resultado">—</strong>
+          </div>
+          <div class="result-box">
+            <span id="out-bruto-label">Pago fraccionado bruto</span>
+            <strong id="out-bruto">—</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>Modo</span><span id="out-modo">—</span></li>
+          <li><span id="label-neto">Rendimiento neto</span><span id="out-neto">—</span></li>
+          <li><span>Pagos previos</span><span id="out-pagos">—</span></li>
+          <li><span>Retenciones</span><span id="out-retenciones">—</span></li>
+          <li><span>Reducción casilla 13</span><span id="out-reduccion">—</span></li>
+        </ul>
+        <p class="hint" id="out-aviso"></p>
+        <p class="hint">
+          Plazos habituales del 130 (orientativos): 1T hasta ~20 abr · 2T ~20 jul · 3T ~20 oct · 4T ~30 ene.
+          Comprueba siempre el calendario oficial de la AEAT.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap note">
+      <h2>Cómo usarla bien</h2>
+      <ol>
+        <li>En estimación directa usa ingresos y gastos <strong>acumulados del ejercicio</strong> (no solo el trimestre), porque el 20&nbsp;% se calcula sobre el neto hasta la fecha y luego se restan los 130 ya pagados.</li>
+        <li>En actividad agraria el 2&nbsp;% se aplica a los <strong>ingresos del trimestre</strong>; los gastos no entran en ese porcentaje.</li>
+        <li>Resta retenciones ya soportadas y, si te corresponde, la reducción de la casilla 13 (aquí, como máximo 100&nbsp;€).</li>
+        <li>Si el 70&nbsp;% o más de tus ingresos llevan retención, marca la casilla: es posible que no debas presentar el 130. Confírmalo en la AEAT.</li>
+        <li>Territorios forales, estimación objetiva (módulos), sociedades y el modelo 131 no están modelados aquí.</li>
+        <li>Para el alta RETA, el IVA trimestral y el calendario 303/130, usa el Kit Autónomo o las calculadoras RETA e IVA gratis.</li>
+      </ol>
+      <p>
+        Relacionado:
+        <a href="calculadora-iva-trimestral-modelo-303-2026.html">calculadora IVA trimestral (modelo 303)</a> ·
+        <a href="../calculadora-autonomos-2026.html">calculadora RETA 2026</a> ·
+        <a href="calculadora-precio-hora-autonomo-2026.html">precio/hora autónomo</a> ·
+        <a href="../productos/kit-autonomo-2026.html">ficha Kit Autónomo</a>
+      </p>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso fuerte (léelo)</h2>
+      <p>
+        Esta página es una herramienta gratuita de <strong>orientación</strong>.
+        <strong>No es asesoramiento fiscal ni contable</strong> y <strong>no genera ni presenta el modelo 130</strong>.
+        No es la Agencia Tributaria, Importass, un gestor ni un programa de declaración.
+        El cálculo simplifica la estimación directa (20&nbsp;% del neto o 2&nbsp;% agrario) y no contempla
+        módulos, prorrateos, actividades simultáneas, reducciones distintas de la casilla 13,
+        recargos, declaraciones complementarias ni normas forales.
+        No emite facturas ni tiene nada que ver con Verifactu.
+        Verifica siempre con un profesional y con la AEAT antes de ingresar o declarar.
+      </p>
+    </aside>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>Kit Autónomo 2026</h2>
+        <p>
+          Calculadora RETA por tramos (Excel), libro de ingresos y gastos, calendario 303/130,
+          checklist de alta y guía. 19,00&nbsp;€. Sin plantilla de factura (Excel no vale como factura / Verifactu).
+        </p>
+        <p style="margin-top:0.5rem">
+          También: <a href="calculadora-iva-trimestral-modelo-303-2026.html">calculadora IVA 303</a> ·
+          <a href="../calculadora-autonomos-2026.html">calculadora RETA 2026 gratis</a> ·
+          <a href="calculadora-precio-hora-autonomo-2026.html">precio/hora autónomo</a> ·
+          <a href="../productos/kit-autonomo-2026.html">ficha Kit Autónomo</a>
+        </p>
+      </div>
+      <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=miguelmuletginerrr@gmail.com&amp;item_name=Kit%20Autonomo%202026&amp;amount=19.00&amp;currency_code=EUR&amp;charset=UTF-8">Pagar 19,00 € · Kit Autónomo</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España</p>
+      <p><a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a> · <a href="../index.html">Volver a la tienda</a></p>
+    </div>
+  </footer>
+
+  <script>
+  const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+
+  function modoActual() {
+    const el = document.querySelector('input[name="modo"]:checked');
+    return el ? el.value : "directa";
+  }
+
+  function actualizarEtiquetas() {
+    const agraria = modoActual() === "agraria";
+    const ingresosLabel = document.getElementById("label-ingresos");
+    const ingresosHint = document.getElementById("hint-ingresos");
+    const gastosInput = document.getElementById("gastos");
+    const gastosHint = document.getElementById("hint-gastos");
+    const brutoLabel = document.getElementById("out-bruto-label");
+    const netoLabel = document.getElementById("label-neto");
+
+    if (agraria) {
+      ingresosLabel.textContent = "Ingresos del trimestre (€)";
+      ingresosHint.textContent = "Ingresos computables solo de este trimestre (no el IVA). El 2 % se aplica sobre esta cifra.";
+      gastosInput.disabled = true;
+      gastosHint.textContent = "En modo agrario los gastos no entran en el porcentaje del 2 %. El campo queda desactivado.";
+      brutoLabel.textContent = "2 % sobre ingresos del trimestre";
+      netoLabel.textContent = "Ingresos del trimestre";
+    } else {
+      ingresosLabel.textContent = "Ingresos acumulados del ejercicio (€)";
+      ingresosHint.textContent = "Suma de ingresos computables desde el 1 de enero hasta el final del trimestre (no el IVA).";
+      gastosInput.disabled = false;
+      gastosHint.textContent = "Gastos deducibles acumulados en el mismo periodo. El neto no baja de 0.";
+      brutoLabel.textContent = "20 % sobre rendimiento neto";
+      netoLabel.textContent = "Rendimiento neto";
+    }
+  }
+
+  function calcular() {
+    actualizarEtiquetas();
+
+    const modo = modoActual();
+    const ingresos = Number(document.getElementById("ingresos").value);
+    const gastos = Number(document.getElementById("gastos").value);
+    const pagos = Number(document.getElementById("pagos").value);
+    const retenciones = Number(document.getElementById("retenciones").value);
+    let reduccion = Number(document.getElementById("reduccion").value);
+    const exento70 = document.getElementById("exento70").checked;
+
+    const aviso = document.getElementById("out-aviso");
+    const out = document.getElementById("out-resultado");
+    const label = document.getElementById("out-label");
+
+    if (![ingresos, gastos, pagos, retenciones, reduccion].every(n => Number.isFinite(n) && n >= 0)) {
+      aviso.textContent = "Revisa que los campos numéricos sean ≥ 0.";
+      return;
+    }
+
+    if (reduccion > 100) {
+      reduccion = 100;
+      document.getElementById("reduccion").value = "100";
+    }
+
+    const setMeta = (neto, bruto, aIngresar, modoTxt) => {
+      document.getElementById("out-modo").textContent = modoTxt;
+      document.getElementById("out-neto").textContent = fmt(neto);
+      document.getElementById("out-bruto").textContent = fmt(bruto);
+      document.getElementById("out-pagos").textContent = fmt(pagos);
+      document.getElementById("out-retenciones").textContent = fmt(retenciones);
+      document.getElementById("out-reduccion").textContent = fmt(reduccion);
+      out.textContent = fmt(aIngresar);
+    };
+
+    if (exento70) {
+      label.textContent = "A ingresar (exención 70 %)";
+      setMeta(0, 0, 0, "Exención 70 % (no se calcula el 20 % / 2 %)");
+      aviso.textContent =
+        "Has marcado la exención del 70 %: esta herramienta muestra 0 €. Si al menos el 70 % de tus ingresos llevan retención, es posible que no tengas que presentar el modelo 130. Confírmalo en la AEAT; esta casilla no comprueba tu porcentaje real.";
+      return;
+    }
+
+    let neto;
+    let bruto;
+    let modoTxt;
+
+    if (modo === "agraria") {
+      neto = ingresos;
+      bruto = 0.02 * ingresos;
+      modoTxt = "Actividad agraria (2 % sobre ingresos del trimestre)";
+    } else {
+      neto = Math.max(0, ingresos - gastos);
+      bruto = 0.20 * neto;
+      modoTxt = "Estimación directa (20 % sobre neto acumulado)";
+    }
+
+    const aIngresar = Math.max(0, bruto - pagos - retenciones - reduccion);
+    label.textContent = "A ingresar (orientativo)";
+    setMeta(neto, bruto, aIngresar, modoTxt);
+
+    if (aIngresar < 0.005) {
+      aviso.textContent =
+        "Resultado 0 en este cálculo: el bruto no supera pagos previos, retenciones y reducción, o el neto es 0. Puede que no haya cantidad a ingresar; no implica que no debas presentar el 130.";
+    } else if (modo === "agraria") {
+      aviso.textContent =
+        "Pago fraccionado orientativo (2 % de los ingresos del trimestre menos pagos, retenciones y casilla 13). Confirma el 130 real en la AEAT antes de pagar.";
+    } else {
+      aviso.textContent =
+        "Pago fraccionado orientativo (20 % del neto acumulado menos pagos, retenciones y casilla 13). Confirma casillas y plazos en la AEAT antes de pagar.";
+    }
+  }
+
+  ["ingresos", "gastos", "pagos", "retenciones", "reduccion", "exento70"].forEach(id => {
+    document.getElementById(id).addEventListener("input", calcular);
+    document.getElementById(id).addEventListener("change", calcular);
+  });
+  document.querySelectorAll('input[name="modo"]').forEach(el => {
+    el.addEventListener("change", calcular);
+  });
+  document.getElementById("calc-btn").addEventListener("click", calcular);
+  calcular();
+  </script>
+</body>
+</html>
