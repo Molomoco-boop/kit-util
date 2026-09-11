@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Simulador gratuito: cuánto cuesta ser autónomo el primer año 2026 en España. Cuotas RETA editables, buffer IRPF y otros gastos. Orientativo. No es AEAT ni TGSS.">
+  <title>Cuánto cuesta ser autónomo el primer año 2026 — simulador | Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/simulador-coste-primer-ano-autonomo-2026.html">
+  <meta property="og:title" content="Coste primer año autónomo 2026 — simulador Kit Útil">
+  <meta property="og:description" content="Estima el coste orientativo del primer año de autónomo: cuota reducida + ordinaria, buffer IRPF y gastos fijos. Todo editable. Confirma en Importass/TGSS.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/simulador-coste-primer-ano-autonomo-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../hub-autonomos-espana-2026.html">Autónomos</a>
+        <a href="simulador-coste-primer-ano-autonomo-2026.html" aria-current="page">Coste año 1</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Cuánto cuesta ser autónomo el primer año 2026</h1>
+      <p class="lede">
+        Simula el <strong>coste orientativo del primer año</strong> como autónomo en España:
+        meses con cuota reducida (si te aplica), cuota ordinaria el resto del año,
+        un buffer de IRPF y otros gastos fijos (gestor, mutua, etc.).
+        <strong>Todos los euros son editables</strong>: no inventamos la «tarifa plana» oficial.
+        Confirma importes y requisitos en Importass / TGSS. <strong>No es asesoramiento fiscal ni laboral</strong>.
+      </p>
+      <p class="hint" style="margin-top:0.75rem">
+        Autor: Miguel Mulet Giner · Kit Útil · Terrassa / España.
+        Relacionado:
+        <a href="tarifa-plana-autonomos-2026.html">tarifa plana 2026</a> ·
+        <a href="checklist-alta-autonomo-espana-2026.html">checklist de alta</a> ·
+        <a href="../calculadora-autonomos-2026.html">calculadora RETA</a> ·
+        <a href="calculadora-precio-hora-autonomo-2026.html">precio/hora</a> ·
+        <a href="../hub-autonomos-espana-2026.html">hub autónomos</a>
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Tus números (editables)</h2>
+        <div class="field">
+          <label for="meses-reducida">Meses con cuota reducida</label>
+          <input id="meses-reducida" name="meses-reducida" type="number" min="0" max="12" step="1" value="12" inputmode="numeric">
+          <span class="hint">Ejemplo por defecto: 12. Si tu bonificación dura menos (o no te aplica), cámbialo. Verifica en Importass.</span>
+        </div>
+        <div class="field">
+          <label for="cuota-reducida">Cuota reducida (€/mes)</label>
+          <input id="cuota-reducida" name="cuota-reducida" type="number" min="0" step="0.01" value="80" placeholder="ej. 80" inputmode="decimal">
+          <span class="hint"><strong>Ejemplo orientativo</strong> (placeholder), no es la tarifa oficial de la TGSS. Sustituye por el importe que te indiquen Importass / tu mutua.</span>
+        </div>
+        <div class="field">
+          <label for="cuota-ordinaria">Cuota ordinaria tras la reducción (€/mes)</label>
+          <input id="cuota-ordinaria" name="cuota-ordinaria" type="number" min="0" step="0.01" value="200" placeholder="ej. 200" inputmode="decimal">
+          <span class="hint">Ejemplo editable según tu base de cotización. Afina con la <a href="../calculadora-autonomos-2026.html">calculadora RETA 2026</a>.</span>
+        </div>
+        <div class="field">
+          <label for="meses-ordinaria">Meses restantes a cuota ordinaria</label>
+          <input id="meses-ordinaria" name="meses-ordinaria" type="number" min="0" max="12" step="1" value="0" inputmode="numeric">
+          <span class="hint">Se calcula solo como 12 − meses reducidos; puedes editarlo si tu año no es calendario completo.</span>
+        </div>
+        <div class="field">
+          <label for="ingresos">Ingresos netos estimados anuales € <em>(opcional)</em></label>
+          <input id="ingresos" name="ingresos" type="number" min="0" step="0.01" value="" placeholder="dejar vacío si no aplica" inputmode="decimal">
+          <span class="hint">Rendimiento neto aproximado del año (ingresos − gastos deducibles). Solo para el buffer IRPF.</span>
+        </div>
+        <div class="field">
+          <label for="irpf">Buffer IRPF (%)</label>
+          <input id="irpf" name="irpf" type="number" min="0" max="50" step="0.5" value="15" inputmode="decimal">
+          <span class="hint">Porcentaje orientativo que apartas si rellenas ingresos. No es tu tipo marginal ni la cuota líquida del 130/100.</span>
+        </div>
+        <div class="field">
+          <label for="otros">Otros gastos fijos anuales € <em>(opcional)</em></label>
+          <input id="otros" name="otros" type="number" min="0" step="0.01" value="" placeholder="mutua, gestor, software…" inputmode="decimal">
+          <span class="hint">Gestoría, seguros, software, material… lo que quieras sumar al primer año.</span>
+        </div>
+        <button class="btn" type="button" id="calc-btn">Calcular coste año 1</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado orientativo</h2>
+        <div class="result">
+          <div class="result-box">
+            <span>Total orientativo año 1</span>
+            <strong id="out-total">—</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>Total cuotas RETA año 1</span><span id="out-cuotas">—</span></li>
+          <li><span>Buffer IRPF estimado</span><span id="out-irpf">—</span></li>
+          <li><span>Otros gastos</span><span id="out-otros">—</span></li>
+          <li><span>Media €/mes</span><span id="out-media">—</span></li>
+        </ul>
+        <p class="hint" id="out-breakdown"></p>
+        <p class="hint" id="out-aviso"></p>
+      </div>
+    </section>
+
+    <section class="wrap" aria-label="Enlaces útiles">
+      <article class="card">
+        <h2>Antes de darte de alta</h2>
+        <p>
+          Repasa la <a href="tarifa-plana-autonomos-2026.html">guía de tarifa plana autónomos 2026</a>
+          (qué preguntar, sin euros «oficiales» inventados) y la
+          <a href="checklist-alta-autonomo-espana-2026.html">checklist de alta autónomo España 2026</a>
+          (RETA, IAE, 036/037, mutua, primeros 303/130).
+        </p>
+        <p>
+          Para afinar la cuota por tramos:
+          <a href="../calculadora-autonomos-2026.html">calculadora RETA 2026</a>.
+          Para poner precio a tu hora:
+          <a href="calculadora-precio-hora-autonomo-2026.html">precio/hora autónomo 2026</a>.
+          Todo el mapa:
+          <a href="../hub-autonomos-espana-2026.html">hub autónomos España 2026</a>.
+        </p>
+      </article>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso fuerte (léelo)</h2>
+      <p>
+        Esta página es una herramienta gratuita de <strong>orientación educativa</strong>
+        de Kit Útil (Miguel Mulet Giner).
+        <strong>No es asesoramiento fiscal, laboral ni contable</strong>.
+        <strong>No es la AEAT ni la TGSS</strong>.
+        No tramita altas, no calcula tu bonificación real ni tu cuota líquida de IRPF.
+        Los importes de cuota reducida y ordinaria son <strong>campos que tú editas</strong>
+        con ejemplos de placeholder; confirma siempre en Importass / Seguridad Social / AEAT
+        o con un profesional colegiado antes de tomar decisiones económicas.
+        Territorio foral, pluriactividad, discapacidad, reincorporación y otras situaciones
+        pueden cambiar por completo el escenario.
+      </p>
+    </aside>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>Kit Autónomo 2026</h2>
+        <p>
+          Si quieres plantillas de organización en un zip (apoyo RETA, libro de ingresos/gastos,
+          calendario 303/130, checklist de alta y guía): 19,00&nbsp;€ pago único.
+          Sin plantilla de factura (Excel no vale como factura / Verifactu).
+        </p>
+        <p style="margin-top:0.5rem">
+          <a href="../productos/kit-autonomo-2026.html">Ficha del Kit Autónomo 19&nbsp;€</a> ·
+          <a href="../hub-autonomos-espana-2026.html">Hub autónomos</a>
+        </p>
+      </div>
+      <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=miguelmuletginerrr@gmail.com&amp;item_name=Kit%20Autonomo%202026&amp;amount=19.00&amp;currency_code=EUR&amp;charset=UTF-8">Pagar 19,00 € · Kit Autónomo</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España</p>
+      <p><a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a> · <a href="../index.html">Volver a la tienda</a></p>
+    </div>
+  </footer>
+
+  <script>
+  const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+  const fmtNum = n => n.toLocaleString("es-ES", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+
+  let syncMeses = true;
+
+  function numOrZero(id) {
+    const raw = document.getElementById(id).value;
+    if (raw === "" || raw === null) return 0;
+    const n = Number(raw);
+    return Number.isFinite(n) ? n : NaN;
+  }
+
+  function hasValue(id) {
+    const raw = document.getElementById(id).value;
+    return raw !== "" && raw !== null;
+  }
+
+  function syncMesesOrdinaria() {
+    if (!syncMeses) return;
+    const mRed = numOrZero("meses-reducida");
+    if (!Number.isFinite(mRed)) return;
+    const auto = Math.max(0, Math.min(12, 12 - mRed));
+    document.getElementById("meses-ordinaria").value = String(auto);
+  }
+
+  function calcular() {
+    const mRed = numOrZero("meses-reducida");
+    const cRed = numOrZero("cuota-reducida");
+    const cOrd = numOrZero("cuota-ordinaria");
+    const mOrd = numOrZero("meses-ordinaria");
+    const irpfPct = numOrZero("irpf");
+    const ingresosFilled = hasValue("ingresos");
+    const otrosFilled = hasValue("otros");
+    const ingresos = ingresosFilled ? numOrZero("ingresos") : 0;
+    const otros = otrosFilled ? numOrZero("otros") : 0;
+
+    const vals = [mRed, cRed, cOrd, mOrd, irpfPct, ingresos, otros];
+    if (!vals.every(n => Number.isFinite(n) && n >= 0)) {
+      document.getElementById("out-aviso").textContent = "Revisa que todos los campos sean números ≥ 0.";
+      return;
+    }
+    if (mRed > 12 || mOrd > 12) {
+      document.getElementById("out-aviso").textContent = "Los meses no deberían superar 12 en este simulador de año 1.";
+      return;
+    }
+    if (irpfPct > 100) {
+      document.getElementById("out-aviso").textContent = "El buffer IRPF debe ser ≤ 100 %.";
+      return;
+    }
+
+    const totalCuotas = (mRed * cRed) + (mOrd * cOrd);
+    const bufferIrpf = ingresosFilled ? (ingresos * irpfPct / 100) : 0;
+    const totalOtros = otros;
+    const total = totalCuotas + bufferIrpf + totalOtros;
+    const media = total / 12;
+
+    document.getElementById("out-total").textContent = fmt(total);
+    document.getElementById("out-cuotas").textContent = fmt(totalCuotas);
+    document.getElementById("out-irpf").textContent = ingresosFilled
+      ? fmt(bufferIrpf) + " (" + irpfPct + " %)"
+      : "— (sin ingresos)";
+    document.getElementById("out-otros").textContent = otrosFilled ? fmt(totalOtros) : "—";
+    document.getElementById("out-media").textContent = fmt(media);
+
+    const parts = [];
+    parts.push(fmtNum(mRed) + " mes(es) × " + fmt(cRed) + " = " + fmt(mRed * cRed) + " (cuota reducida, ejemplo editable)");
+    parts.push(fmtNum(mOrd) + " mes(es) × " + fmt(cOrd) + " = " + fmt(mOrd * cOrd) + " (cuota ordinaria)");
+    if (ingresosFilled) {
+      parts.push("Buffer IRPF: " + fmt(ingresos) + " × " + irpfPct + " % = " + fmt(bufferIrpf));
+    }
+    if (otrosFilled) {
+      parts.push("Otros gastos fijos: " + fmt(totalOtros));
+    }
+    parts.push("Suma orientativa año 1: " + fmt(total) + " → media " + fmt(media) + "/mes.");
+    document.getElementById("out-breakdown").textContent = parts.join(" · ");
+    document.getElementById("out-aviso").textContent =
+      "Orientativo. Sustituye los € de cuota por los que te confirme Importass/TGSS. No es asesoramiento fiscal.";
+  }
+
+  document.getElementById("meses-reducida").addEventListener("input", () => {
+    syncMeses = true;
+    syncMesesOrdinaria();
+    calcular();
+  });
+  document.getElementById("meses-reducida").addEventListener("change", () => {
+    syncMeses = true;
+    syncMesesOrdinaria();
+    calcular();
+  });
+  document.getElementById("meses-ordinaria").addEventListener("input", () => {
+    syncMeses = false;
+    calcular();
+  });
+  document.getElementById("meses-ordinaria").addEventListener("change", () => {
+    syncMeses = false;
+    calcular();
+  });
+
+  ["cuota-reducida", "cuota-ordinaria", "ingresos", "irpf", "otros"].forEach(id => {
+    document.getElementById(id).addEventListener("input", calcular);
+    document.getElementById(id).addEventListener("change", calcular);
+  });
+  document.getElementById("calc-btn").addEventListener("click", calcular);
+
+  syncMesesOrdinaria();
+  calcular();
+  </script>
+</body>
+</html>
