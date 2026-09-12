@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita de gastos deducibles para autónomos 2026 (estimación directa): local, suministros, software, kilometraje y más. Orientativa. No es AEAT ni asesoramiento fiscal.">
+  <title>Calculadora gastos deducibles autónomos 2026 — Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-gastos-deducibles-autonomos-2026.html">
+  <meta property="og:title" content="Gastos deducibles autónomos 2026 — calculadora Kit Útil">
+  <meta property="og:description" content="Checklist + calculadora de gastos habituales en estimación directa: local/vivienda, suministros, software, transporte y más. Todo editable. No es asesoramiento fiscal.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-gastos-deducibles-autonomos-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+  <style>
+    .cat-block { border-top: 1px solid rgba(0,0,0,.08); padding-top: 1rem; margin-top: 1rem; }
+    .cat-block:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+    .cat-block h3 { font-family: "Newsreader", Georgia, serif; font-size: 1.05rem; margin: 0 0 0.65rem; font-weight: 600; }
+    .field-row { display: grid; gap: 0.75rem; }
+    @media (min-width: 640px) {
+      .field-row.two { grid-template-columns: 1fr 1fr; }
+      .field-row.three { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .deducible-line { font-size: 0.9rem; color: #444; margin: 0.35rem 0 0; }
+    .deducible-line strong { font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../hub-autonomos-espana-2026.html">Autónomos</a>
+        <a href="calculadora-gastos-deducibles-autonomos-2026.html" aria-current="page">Gastos deducibles</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora de gastos deducibles autónomos 2026</h1>
+      <p class="lede">
+        Checklist interactiva para estimar gastos habituales en
+        <strong>estimación directa</strong> (España). Introduce tus €/mes (y % de afectación
+        donde aplique); sumamos el total mensual y anual orientativo.
+        <strong>No es asesoramiento fiscal</strong>, no es la AEAT y no sustituye a tu gestor.
+        Los % de vivienda y suministros deben poder justificarse; la factura / Verifactu
+        siguen sus propias reglas.
+      </p>
+      <p class="hint" style="margin-top:0.75rem">
+        Autor: Miguel Mulet Giner · Kit Útil · Terrassa / España.
+        Relacionado:
+        <a href="../calculadora-autonomos-2026.html">calculadora RETA</a> ·
+        <a href="calculadora-modelo-130-irpf-2026.html">modelo 130</a> ·
+        <a href="checklist-alta-autonomo-espana-2026.html">checklist de alta</a> ·
+        <a href="../hub-autonomos-espana-2026.html">hub autónomos</a>
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Tus gastos (€/mes, editables)</h2>
+        <p class="hint">Deja en 0 lo que no uses. Los importes son <strong>tus datos</strong>, no tarifas oficiales.</p>
+
+        <div class="cat-block">
+          <h3>1. Local / coworking / parte de vivienda</h3>
+          <div class="field-row two">
+            <div class="field">
+              <label for="local-base">Gasto total del local o vivienda (€/mes)</label>
+              <input id="local-base" type="number" min="0" step="0.01" value="0" inputmode="decimal" placeholder="alquiler, hipoteca interés…">
+            </div>
+            <div class="field">
+              <label for="local-pct">% afectación a la actividad</label>
+              <input id="local-pct" type="number" min="0" max="100" step="0.1" value="30" inputmode="decimal">
+              <span class="hint">Editable. En vivienda el % debe ser <strong>justificable</strong> (metros, uso exclusivo, etc.). Contrasta con tu gestor.</span>
+            </div>
+          </div>
+          <p class="deducible-line">Orientativo deducible: <strong id="line-local">0,00 €</strong>/mes</p>
+        </div>
+
+        <div class="cat-block">
+          <h3>2. Suministros (luz, agua, gas, internet…)</h3>
+          <div class="field-row two">
+            <div class="field">
+              <label for="sum-base">Gasto total suministros (€/mes)</label>
+              <input id="sum-base" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+            </div>
+            <div class="field">
+              <label for="sum-pct">% afectación a la actividad</label>
+              <input id="sum-pct" type="number" min="0" max="100" step="0.1" value="30" inputmode="decimal">
+              <span class="hint">Editable. No fijamos un % «oficial» AEAT: introduce el que puedas acreditar.</span>
+            </div>
+          </div>
+          <p class="deducible-line">Orientativo deducible: <strong id="line-sum">0,00 €</strong>/mes</p>
+        </div>
+
+        <div class="cat-block">
+          <h3>3. Materiales / stock / mercaderías</h3>
+          <div class="field">
+            <label for="mat">€/mes</label>
+            <input id="mat" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+            <span class="hint">Compras vinculadas a la actividad. Guarda facturas/tickets válidos.</span>
+          </div>
+        </div>
+
+        <div class="cat-block">
+          <h3>4. Software / suscripciones</h3>
+          <div class="field">
+            <label for="soft">€/mes</label>
+            <input id="soft" type="number" min="0" step="0.01" value="0" inputmode="decimal" placeholder="SaaS, hosting, herramientas…">
+          </div>
+        </div>
+
+        <div class="cat-block">
+          <h3>5. Teléfono / comunicaciones</h3>
+          <div class="field">
+            <label for="tel">€/mes</label>
+            <input id="tel" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+            <span class="hint">Si es línea mixta personal/profesional, aplica solo la parte profesional que puedas justificar.</span>
+          </div>
+        </div>
+
+        <div class="cat-block">
+          <h3>6. Transporte / kilometraje</h3>
+          <div class="field-row three">
+            <div class="field">
+              <label for="km">Km profesionales / mes</label>
+              <input id="km" type="number" min="0" step="1" value="0" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="eur-km">€ / km (editable)</label>
+              <input id="eur-km" type="number" min="0" step="0.001" value="0.26" inputmode="decimal">
+              <span class="hint">Placeholder ~0,26 €/km. <strong>Verifica el baremo o criterio oficial vigente</strong> (no lo damos como hecho AEAT). Puedes dejar 0 y usar solo gastos reales abajo.</span>
+            </div>
+            <div class="field">
+              <label for="trans-fijo">Otros transporte (€/mes)</label>
+              <input id="trans-fijo" type="number" min="0" step="0.01" value="0" inputmode="decimal" placeholder="parking, peajes, abono…">
+            </div>
+          </div>
+          <p class="deducible-line">Orientativo (km × €/km + otros): <strong id="line-trans">0,00 €</strong>/mes</p>
+        </div>
+
+        <div class="cat-block">
+          <h3>7. Formación relacionada con la actividad</h3>
+          <div class="field">
+            <label for="form">€/mes <em>(prorratea cursos anuales)</em></label>
+            <input id="form" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+          </div>
+        </div>
+
+        <div class="cat-block">
+          <h3>8. Seguros (RC, equipo, etc.)</h3>
+          <div class="field">
+            <label for="seg">€/mes <em>(prorratea primas anuales)</em></label>
+            <input id="seg" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+          </div>
+        </div>
+
+        <div class="cat-block">
+          <h3>9. Publicidad / marketing</h3>
+          <div class="field">
+            <label for="pub">€/mes</label>
+            <input id="pub" type="number" min="0" step="0.01" value="0" inputmode="decimal" placeholder="ads, tarjetas, web…">
+          </div>
+        </div>
+
+        <div class="cat-block">
+          <h3>10. Otros gastos profesionales</h3>
+          <div class="field">
+            <label for="otros">€/mes</label>
+            <input id="otros" type="number" min="0" step="0.01" value="0" inputmode="decimal" placeholder="gestoría, material oficina…">
+            <span class="hint">Cuota RETA no va aquí como «gasto IRPF» de la misma forma: usa la <a href="../calculadora-autonomos-2026.html">calculadora RETA</a> y el <a href="calculadora-modelo-130-irpf-2026.html">modelo 130</a>.</span>
+          </div>
+        </div>
+
+        <button class="btn" type="button" id="calc-btn">Calcular totales</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado orientativo</h2>
+        <div class="result">
+          <div class="result-box">
+            <span>Total gastos estimados / mes</span>
+            <strong id="out-mes">—</strong>
+          </div>
+          <div class="result-box" style="margin-top:0.75rem">
+            <span>Total estimado / año (×12)</span>
+            <strong id="out-ano">—</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>Local / vivienda (con %)</span><span id="out-local">—</span></li>
+          <li><span>Suministros (con %)</span><span id="out-sum">—</span></li>
+          <li><span>Materiales / stock</span><span id="out-mat">—</span></li>
+          <li><span>Software</span><span id="out-soft">—</span></li>
+          <li><span>Teléfono</span><span id="out-tel">—</span></li>
+          <li><span>Transporte / km</span><span id="out-trans">—</span></li>
+          <li><span>Formación</span><span id="out-form">—</span></li>
+          <li><span>Seguros</span><span id="out-seg">—</span></li>
+          <li><span>Publicidad</span><span id="out-pub">—</span></li>
+          <li><span>Otros</span><span id="out-otros">—</span></li>
+        </ul>
+        <p class="hint" id="out-aviso"></p>
+        <p class="hint" style="margin-top:0.75rem">
+          Siguiente paso habitual: llevar estos números al
+          <a href="calculadora-modelo-130-irpf-2026.html">pago fraccionado modelo 130</a>
+          (ingresos − gastos del trimestre) y contrastar con tu libro de ingresos y gastos.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap" aria-label="Enlaces útiles">
+      <article class="card">
+        <h2>Más herramientas para autónomos</h2>
+        <p>
+          <a href="../calculadora-autonomos-2026.html">Calculadora RETA 2026</a> ·
+          <a href="calculadora-modelo-130-irpf-2026.html">Modelo 130 IRPF</a> ·
+          <a href="calculadora-iva-trimestral-modelo-303-2026.html">IVA / modelo 303</a> ·
+          <a href="checklist-alta-autonomo-espana-2026.html">Checklist de alta</a> ·
+          <a href="simulador-coste-primer-ano-autonomo-2026.html">Coste primer año</a> ·
+          <a href="calculadora-precio-hora-autonomo-2026.html">Precio/hora</a> ·
+          <a href="../hub-autonomos-espana-2026.html">Hub autónomos España 2026</a>
+        </p>
+      </article>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso fuerte (léelo)</h2>
+      <p>
+        Esta página es una herramienta gratuita de <strong>orientación educativa</strong>
+        de Kit Útil (Miguel Mulet Giner).
+        <strong>No es asesoramiento fiscal, laboral ni contable</strong>.
+        <strong>No es la Agencia Tributaria (AEAT)</strong> ni sustituye a un gestor colegiado.
+        Pensada para autónomos en <strong>estimación directa</strong>; no cubre estimación objetiva
+        (módulos), regímenes especiales ni territorio foral.
+        Un gasto solo es deducible si cumple los requisitos legales (vinculación a la actividad,
+        justificación documental, contabilización, etc.). El % de afectación de
+        <strong>vivienda y suministros</strong> debe poder demostrarse; no uses un porcentaje
+        inventado. Las normas de <strong>factura electrónica / Verifactu</strong> y de validez
+        de tickets son independientes de esta calculadora. El €/km es un campo editable con
+        valor de ejemplo: <strong>verifica siempre el baremo o criterio oficial vigente</strong>.
+        Confirma cualquier cifra con un profesional antes de presentar modelos o declarar.
+      </p>
+    </aside>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>Kit Autónomo 2026</h2>
+        <p>
+          Calculadora RETA por tramos (Excel), libro de ingresos y gastos, calendario 303/130,
+          checklist de alta y guía. 19,00&nbsp;€. Sin plantilla de factura (Excel no vale como factura / Verifactu).
+        </p>
+        <p style="margin-top:0.5rem">
+          También: <a href="../calculadora-autonomos-2026.html">calculadora RETA 2026 gratis</a> ·
+          <a href="../productos/kit-autonomo-2026.html">ficha del Kit Autónomo</a> ·
+          <a href="../hub-autonomos-espana-2026.html">hub autónomos</a>
+        </p>
+      </div>
+      <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=miguelmuletginerrr@gmail.com&amp;item_name=Kit%20Autonomo%202026&amp;amount=19.00&amp;currency_code=EUR&amp;charset=UTF-8">Pagar 19,00 € · Kit Autónomo</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España</p>
+      <p><a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a> · <a href="../index.html">Volver a la tienda</a></p>
+    </div>
+  </footer>
+
+  <script>
+  const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+
+  function num(id) {
+    const raw = document.getElementById(id).value;
+    if (raw === "" || raw === null) return 0;
+    const n = Number(raw);
+    return Number.isFinite(n) ? n : NaN;
+  }
+
+  function clampPct(p) {
+    if (!Number.isFinite(p)) return NaN;
+    return Math.max(0, Math.min(100, p));
+  }
+
+  function calcular() {
+    const localBase = num("local-base");
+    const localPct = clampPct(num("local-pct"));
+    const sumBase = num("sum-base");
+    const sumPct = clampPct(num("sum-pct"));
+    const mat = num("mat");
+    const soft = num("soft");
+    const tel = num("tel");
+    const km = num("km");
+    const eurKm = num("eur-km");
+    const transFijo = num("trans-fijo");
+    const form = num("form");
+    const seg = num("seg");
+    const pub = num("pub");
+    const otros = num("otros");
+
+    const vals = [localBase, localPct, sumBase, sumPct, mat, soft, tel, km, eurKm, transFijo, form, seg, pub, otros];
+    if (!vals.every(n => Number.isFinite(n) && n >= 0)) {
+      document.getElementById("out-aviso").textContent = "Revisa que todos los campos sean números ≥ 0 (los % entre 0 y 100).";
+      return;
+    }
+
+    const local = localBase * (localPct / 100);
+    const suministros = sumBase * (sumPct / 100);
+    const transporte = km * eurKm + transFijo;
+
+    document.getElementById("line-local").textContent = fmt(local);
+    document.getElementById("line-sum").textContent = fmt(suministros);
+    document.getElementById("line-trans").textContent = fmt(transporte);
+
+    const totalMes = local + suministros + mat + soft + tel + transporte + form + seg + pub + otros;
+    const totalAno = totalMes * 12;
+
+    document.getElementById("out-mes").textContent = fmt(totalMes);
+    document.getElementById("out-ano").textContent = fmt(totalAno);
+    document.getElementById("out-local").textContent = fmt(local);
+    document.getElementById("out-sum").textContent = fmt(suministros);
+    document.getElementById("out-mat").textContent = fmt(mat);
+    document.getElementById("out-soft").textContent = fmt(soft);
+    document.getElementById("out-tel").textContent = fmt(tel);
+    document.getElementById("out-trans").textContent = fmt(transporte);
+    document.getElementById("out-form").textContent = fmt(form);
+    document.getElementById("out-seg").textContent = fmt(seg);
+    document.getElementById("out-pub").textContent = fmt(pub);
+    document.getElementById("out-otros").textContent = fmt(otros);
+
+    let aviso = "Cifras orientativas a partir de tus inputs. No implica que Hacienda acepte cada partida.";
+    if (localPct > 50 && localBase > 0) {
+      aviso += " Atención: un % alto de vivienda suele exigir justificación sólida.";
+    }
+    if (eurKm > 0 && km > 0) {
+      aviso += " Revisa el €/km con el baremo o criterio oficial vigente.";
+    }
+    document.getElementById("out-aviso").textContent = aviso;
+  }
+
+  document.getElementById("calc-btn").addEventListener("click", calcular);
+  document.getElementById("calc-form").addEventListener("input", calcular);
+  calcular();
+  </script>
+</body>
+</html>
