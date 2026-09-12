@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita de retención IRPF en facturas de autónomos 2026: 15 % general, 7 % nuevos autónomos o % personalizado. Orientativa. No es AEAT ni asesoramiento fiscal.">
+  <title>Calculadora retención IRPF facturas autónomos 2026 — Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-retencion-irpf-facturas-autonomos-2026.html">
+  <meta property="og:title" content="Retención IRPF facturas autónomos 2026 — calculadora Kit Útil">
+  <meta property="og:description" content="Cuánto retener en factura: 15 %, 7 % (nuevos autónomos) o % custom. Base imponible → retención y neto a cobrar. Gratis. No es asesoramiento fiscal.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-retencion-irpf-facturas-autonomos-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+  <style>
+    .field-row { display: grid; gap: 0.75rem; }
+    @media (min-width: 640px) {
+      .field-row.two { grid-template-columns: 1fr 1fr; }
+    }
+    .radio-row { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; }
+    .radio-row label { font-weight: 500; cursor: pointer; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora retención IRPF facturas autónomos 2026",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "inLanguage": "es-ES",
+    "url": "https://molomoco-boop.github.io/kit-util/herramientas/calculadora-retencion-irpf-facturas-autonomos-2026.html",
+    "description": "Herramienta gratuita orientativa para estimar la retención de IRPF en facturas de autónomos en España (15 %, 7 % o personalizado). No es asesoramiento fiscal."
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../hub-autonomos-espana-2026.html">Autónomos</a>
+        <a href="calculadora-retencion-irpf-facturas-autonomos-2026.html" aria-current="page">Retención IRPF</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora de retención IRPF en facturas de autónomos 2026</h1>
+      <p class="lede">
+        Estima <strong>cuánto retener en factura</strong> (15&nbsp;% general, 7&nbsp;% nuevos autónomos
+        en los primeros años, 0&nbsp;% cuando no aplica, o un % personalizado):
+        introduce la base imponible y obtienes retención y neto a cobrar.
+        Pensada para autónomos en España que emiten facturas con retención de IRPF.
+        <strong>No es la AEAT ni asesoramiento fiscal</strong>.
+      </p>
+      <p class="hint" style="margin-top:0.75rem">
+        Autor: Miguel Mulet Giner · Kit Útil · Terrassa / España.
+        Relacionado:
+        <a href="calculadora-modelo-130-irpf-2026.html">modelo 130</a> ·
+        <a href="calculadora-iva-trimestral-modelo-303-2026.html">IVA / 303</a> ·
+        <a href="calculadora-gastos-deducibles-autonomos-2026.html">gastos deducibles</a> ·
+        <a href="checklist-alta-autonomo-espana-2026.html">checklist de alta</a> ·
+        <a href="../hub-autonomos-espana-2026.html">hub autónomos</a>
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Datos de la factura</h2>
+        <p class="hint">Todos los campos son editables. La retención se calcula sobre la <strong>base imponible</strong> (sin IVA).</p>
+
+        <div class="field">
+          <label for="base">Base imponible (€)</label>
+          <input id="base" name="base" type="number" min="0" step="0.01" value="1000" inputmode="decimal">
+          <span class="hint">Importe de tus honorarios / servicios antes de IVA y antes de retención.</span>
+        </div>
+
+        <div class="field">
+          <label id="label-tipo">Tipo de retención</label>
+          <div class="radio-row" role="radiogroup" aria-labelledby="label-tipo">
+            <label><input type="radio" name="tipo" value="15" checked> 15&nbsp;% (general)</label>
+            <label><input type="radio" name="tipo" value="7"> 7&nbsp;% (nuevos autónomos)</label>
+            <label><input type="radio" name="tipo" value="0"> 0&nbsp;% (no aplica)</label>
+            <label><input type="radio" name="tipo" value="custom"> % personalizado</label>
+          </div>
+          <span class="hint">
+            Orientativo: muchos profesionales usan 15&nbsp;%; el 7&nbsp;% suele asociarse a
+            <strong>nuevos autónomos en los primeros años</strong> de actividad (condiciones y plazos
+            dependen de tu situación). El 0&nbsp;% cuando el cliente no está obligado a retener
+            o la operación no lleva retención. Confirma con tu gestor / AEAT.
+          </span>
+        </div>
+
+        <div class="field" id="custom-field" hidden>
+          <label for="custom-pct">Porcentaje personalizado (%)</label>
+          <input id="custom-pct" type="number" min="0" max="100" step="0.01" value="15" inputmode="decimal">
+          <span class="hint">Entre 0 y 100. Úsalo solo si conoces el % que te corresponde.</span>
+        </div>
+
+        <div class="field-row two">
+          <div class="field">
+            <label for="facturas-mes">Facturas / mes (proyección anual)</label>
+            <input id="facturas-mes" type="number" min="0" step="1" value="1" inputmode="numeric">
+            <span class="hint">Opcional. Nº de facturas iguales al mes para proyectar retención y neto al año.</span>
+          </div>
+          <div class="field">
+            <label for="meses">Meses activos / año</label>
+            <input id="meses" type="number" min="1" max="12" step="1" value="12" inputmode="numeric">
+            <span class="hint">Por defecto 12. Baja el número si no facturas todo el año.</span>
+          </div>
+        </div>
+
+        <button class="btn" type="button" id="calc-btn">Calcular retención</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado orientativo</h2>
+        <div class="result">
+          <div class="result-box">
+            <span>Retención IRPF</span>
+            <strong id="out-retencion">—</strong>
+          </div>
+          <div class="result-box" style="margin-top:0.75rem">
+            <span>Neto a cobrar (sin IVA)</span>
+            <strong id="out-neto">—</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>Base imponible</span><span id="out-base">—</span></li>
+          <li><span>% aplicado</span><span id="out-pct">—</span></li>
+          <li><span>Retención / año (proyección)</span><span id="out-ret-ano">—</span></li>
+          <li><span>Neto / año (proyección)</span><span id="out-neto-ano">—</span></li>
+        </ul>
+        <p class="hint" id="out-aviso"></p>
+        <p class="hint" style="margin-top:0.75rem">
+          Las retenciones que te practiquen suelen restarse en el
+          <a href="calculadora-modelo-130-irpf-2026.html">pago fraccionado modelo 130</a>
+          y en la declaración anual de IRPF. El IVA va aparte (modelo 303).
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap note">
+      <h2>Cómo usarla bien</h2>
+      <ol>
+        <li>Introduce la <strong>base imponible</strong> de la factura (sin IVA). Ejemplo: 1.000&nbsp;€ al 15&nbsp;% → retención 150&nbsp;€, neto 850&nbsp;€.</li>
+        <li>Elige 15&nbsp;% (tipo general habitual en muchos profesionales), 7&nbsp;% (orientativo para <strong>nuevos autónomos</strong> en los primeros años), 0&nbsp;% si no aplica retención, o un % personalizado.</li>
+        <li>No todos los autónomos llevan retención en factura: depende de si eres profesional vs empresario, del tipo de cliente (obligado a retener) y de la operación. Si dudas, pregunta a tu gestor.</li>
+        <li>El IVA se calcula sobre la base y se declara en el <a href="calculadora-iva-trimestral-modelo-303-2026.html">modelo 303</a>; la retención de IRPF es independiente.</li>
+        <li>Acumula las retenciones soportadas para el <a href="calculadora-modelo-130-irpf-2026.html">modelo 130</a> y la renta. Esta herramienta no presenta nada a Hacienda.</li>
+        <li>Territorio foral, módulos, sociedades y casos especiales no están modelados aquí.</li>
+      </ol>
+      <p>
+        Relacionado:
+        <a href="calculadora-modelo-130-irpf-2026.html">calculadora modelo 130</a> ·
+        <a href="calculadora-iva-trimestral-modelo-303-2026.html">IVA trimestral (303)</a> ·
+        <a href="calculadora-gastos-deducibles-autonomos-2026.html">gastos deducibles</a> ·
+        <a href="checklist-alta-autonomo-espana-2026.html">checklist de alta</a> ·
+        <a href="../hub-autonomos-espana-2026.html">hub autónomos</a> ·
+        <a href="../kit-autonomo-2026.html">Kit Autónomo 19&nbsp;€</a>
+      </p>
+    </section>
+
+    <section class="wrap" aria-label="Enlaces útiles">
+      <article class="card">
+        <h2>Más herramientas para autónomos</h2>
+        <p>
+          <a href="../calculadora-autonomos-2026.html">Calculadora RETA 2026</a> ·
+          <a href="calculadora-modelo-130-irpf-2026.html">Modelo 130 IRPF</a> ·
+          <a href="calculadora-iva-trimestral-modelo-303-2026.html">IVA / modelo 303</a> ·
+          <a href="calculadora-gastos-deducibles-autonomos-2026.html">Gastos deducibles</a> ·
+          <a href="checklist-alta-autonomo-espana-2026.html">Checklist de alta</a> ·
+          <a href="simulador-coste-primer-ano-autonomo-2026.html">Coste primer año</a> ·
+          <a href="../hub-autonomos-espana-2026.html">Hub autónomos España 2026</a>
+        </p>
+      </article>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso fuerte (léelo)</h2>
+      <p>
+        Esta página es una herramienta gratuita de <strong>orientación educativa</strong>
+        de Kit Útil (Miguel Mulet Giner · Terrassa / España).
+        <strong>No es asesoramiento fiscal, laboral ni contable</strong>.
+        <strong>No es la Agencia Tributaria (AEAT)</strong> ni sustituye a un gestor colegiado.
+        Los tipos 15&nbsp;%, 7&nbsp;% y 0&nbsp;% son referencias habituales orientativas:
+        el porcentaje real depende de tu situación (nuevo autónomo y periodo aplicable,
+        profesionales frente a empresarios, si el cliente está obligado a retener, tipo de
+        operación, territorio común vs foral, etc.).
+        Esta calculadora <strong>no emite facturas</strong>, no tiene relación con Verifactu
+        y no presenta modelos. Confirma cualquier cifra con un profesional y con la AEAT
+        antes de facturar o declarar.
+      </p>
+    </aside>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>Kit Autónomo 2026</h2>
+        <p>
+          Calculadora RETA por tramos (Excel), libro de ingresos y gastos, calendario 303/130,
+          checklist de alta y guía. 19,00&nbsp;€. Sin plantilla de factura (Excel no vale como factura / Verifactu).
+        </p>
+        <p style="margin-top:0.5rem">
+          También: <a href="../kit-autonomo-2026.html">ficha Kit Autónomo</a> ·
+          <a href="calculadora-modelo-130-irpf-2026.html">modelo 130</a> ·
+          <a href="calculadora-gastos-deducibles-autonomos-2026.html">gastos deducibles</a> ·
+          <a href="../hub-autonomos-espana-2026.html">hub autónomos</a>
+        </p>
+      </div>
+      <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=miguelmuletginerrr@gmail.com&amp;item_name=Kit%20Autonomo%202026&amp;amount=19.00&amp;currency_code=EUR&amp;charset=UTF-8">Pagar 19,00 € · Kit Autónomo</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · Terrassa / España</p>
+      <p>
+        Soporte / contacto: <a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a>
+        · <a href="mailto:kitutil@agentmail.to">kitutil@agentmail.to</a>
+      </p>
+      <p>
+        <a href="../privacidad.html">Política de privacidad</a> ·
+        <a href="../terminos.html">Términos de uso</a> ·
+        <a href="../index.html">Volver a la tienda</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+  const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+  const fmtPct = n => n.toLocaleString("es-ES", { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + " %";
+
+  function tipoSeleccionado() {
+    const el = document.querySelector('input[name="tipo"]:checked');
+    return el ? el.value : "15";
+  }
+
+  function pctEfectivo() {
+    const tipo = tipoSeleccionado();
+    if (tipo === "custom") {
+      const c = Number(document.getElementById("custom-pct").value);
+      return Number.isFinite(c) ? Math.max(0, Math.min(100, c)) : NaN;
+    }
+    return Number(tipo);
+  }
+
+  function syncCustomVisibility() {
+    const show = tipoSeleccionado() === "custom";
+    document.getElementById("custom-field").hidden = !show;
+  }
+
+  function calcular() {
+    syncCustomVisibility();
+
+    const base = Number(document.getElementById("base").value);
+    const pct = pctEfectivo();
+    let facturasMes = Number(document.getElementById("facturas-mes").value);
+    let meses = Number(document.getElementById("meses").value);
+    const aviso = document.getElementById("out-aviso");
+
+    if (![base, pct, facturasMes, meses].every(n => Number.isFinite(n) && n >= 0)) {
+      aviso.textContent = "Revisa que los campos numéricos sean ≥ 0.";
+      return;
+    }
+    if (meses < 1) meses = 1;
+    if (meses > 12) {
+      meses = 12;
+      document.getElementById("meses").value = "12";
+    }
+    if (pct > 100) {
+      aviso.textContent = "El porcentaje no puede superar 100.";
+      return;
+    }
+
+    const retencion = base * (pct / 100);
+    const neto = base - retencion;
+    const factorAno = facturasMes * meses;
+    const retAno = retencion * factorAno;
+    const netoAno = neto * factorAno;
+
+    document.getElementById("out-retencion").textContent = fmt(retencion);
+    document.getElementById("out-neto").textContent = fmt(neto);
+    document.getElementById("out-base").textContent = fmt(base);
+    document.getElementById("out-pct").textContent = fmtPct(pct);
+    document.getElementById("out-ret-ano").textContent = fmt(retAno);
+    document.getElementById("out-neto-ano").textContent = fmt(netoAno);
+
+    let msg = "Cifras orientativas a partir de tus inputs. No implica que ese % sea el correcto para tu caso.";
+    if (pct === 7) {
+      msg += " El 7 % suele vincularse a nuevos autónomos en los primeros años: verifica si aún te aplica.";
+    } else if (pct === 0) {
+      msg += " 0 %: solo si realmente no procede retención en esa factura/cliente.";
+    } else if (pct === 15) {
+      msg += " 15 % es el tipo general más citado para muchos profesionales; confirma tu caso.";
+    }
+    if (factorAno > 1) {
+      msg += " La proyección anual asume facturas idénticas (" + facturasMes + "/mes × " + meses + " meses).";
+    }
+    aviso.textContent = msg;
+  }
+
+  document.querySelectorAll('input[name="tipo"]').forEach(el => {
+    el.addEventListener("change", calcular);
+  });
+  ["base", "custom-pct", "facturas-mes", "meses"].forEach(id => {
+    document.getElementById(id).addEventListener("input", calcular);
+    document.getElementById(id).addEventListener("change", calcular);
+  });
+  document.getElementById("calc-btn").addEventListener("click", calcular);
+  calcular();
+  </script>
+</body>
+</html>
