@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Checklist gratuita: qué debe incluir una factura de autónomo en España 2026 (NIF, base, IVA, retención IRPF, número, fecha). Orientativa Kit Útil. No es AEAT ni Verifactu.">
+  <title>Checklist factura autónomo España 2026 — Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/checklist-factura-autonomo-espana-2026.html">
+  <meta property="og:title" content="Checklist factura autónomo España 2026 — Kit Útil">
+  <meta property="og:description" content="Marca lo obligatorio en tu factura: datos fiscales, base, IVA, retención IRPF 15%/7%, numeración y fecha. Gratis. No es asesoramiento fiscal.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/checklist-factura-autonomo-espana-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+  <style>
+    .check-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.65rem; }
+    .check-list li { display: flex; gap: 0.65rem; align-items: flex-start; }
+    .check-list input { margin-top: 0.25rem; flex-shrink: 0; }
+    .progress { font-weight: 600; margin-top: 1rem; }
+    .progress-bar { height: 0.5rem; background: #e5e7eb; border-radius: 999px; overflow: hidden; margin-top: 0.35rem; }
+    .progress-bar > span { display: block; height: 100%; background: #0f766e; width: 0%; transition: width .2s ease; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Checklist factura autónomo España 2026",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "inLanguage": "es-ES",
+    "url": "https://molomoco-boop.github.io/kit-util/herramientas/checklist-factura-autonomo-espana-2026.html",
+    "description": "Checklist interactiva orientativa de campos habituales en facturas de autónomos en España. No es asesoramiento fiscal ni Verifactu."
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../hub-autonomos-espana-2026.html">Autónomos</a>
+        <a href="checklist-factura-autonomo-espana-2026.html" aria-current="page">Factura</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Checklist: qué debe incluir una factura de autónomo en España 2026</h1>
+      <p class="lede">
+        Marca los datos que suele llevar una factura completa (emisor, cliente, bases, IVA,
+        retención IRPF si aplica, numeración y fecha). Pensada para autónomos que facturan
+        a empresas o particulares. <strong>No es la AEAT, no es Verifactu y no es asesoramiento fiscal</strong>.
+      </p>
+      <p class="hint" style="margin-top:0.75rem">
+        Autor: Miguel Mulet Giner · Kit Útil · Terrassa / España.
+        Relacionado:
+        <a href="calculadora-retencion-irpf-facturas-autonomos-2026.html">retención IRPF</a> ·
+        <a href="calculadora-iva-trimestral-modelo-303-2026.html">IVA / 303</a> ·
+        <a href="calculadora-modelo-130-irpf-2026.html">modelo 130</a> ·
+        <a href="checklist-alta-autonomo-espana-2026.html">checklist de alta</a> ·
+        <a href="../hub-autonomos-espana-2026.html">hub autónomos</a>
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="checklist-form" onsubmit="return false;">
+        <h2>Campos habituales de la factura</h2>
+        <ul class="check-list" id="checks">
+          <li><input type="checkbox" id="c1"><label for="c1">Número de factura correlativo (serie + número, sin huecos arbitrarios)</label></li>
+          <li><input type="checkbox" id="c2"><label for="c2">Fecha de expedición (y fecha de operación si es distinta)</label></li>
+          <li><input type="checkbox" id="c3"><label for="c3">Datos del emisor: nombre/razón social, NIF y domicilio fiscal</label></li>
+          <li><input type="checkbox" id="c4"><label for="c4">Datos del cliente: nombre/razón social, NIF/NIE/CIF y domicilio (si procede)</label></li>
+          <li><input type="checkbox" id="c5"><label for="c5">Descripción clara del bien o servicio (concepto + cantidad/unidad si aplica)</label></li>
+          <li><input type="checkbox" id="c6"><label for="c6">Base imponible desglosada</label></li>
+          <li><input type="checkbox" id="c7"><label for="c7">Tipo de IVA aplicado (p. ej. 21 %, 10 %, 4 %, exento o inversión del sujeto pasivo) y cuota</label></li>
+          <li><input type="checkbox" id="c8"><label for="c8">Si aplica retención IRPF (15 % general o 7 % nuevos autónomos): % y importe</label></li>
+          <li><input type="checkbox" id="c9"><label for="c9">Total a pagar = bases + IVA − retención (si hay)</label></li>
+          <li><input type="checkbox" id="c10"><label for="c10">Forma y plazo de pago / IBAN si lo pides (opcional pero útil)</label></li>
+          <li><input type="checkbox" id="c11"><label for="c11">Mención legal si hay exención, ISP, recargo de equivalencia u otra particularidad</label></li>
+        </ul>
+        <p class="progress" id="progress-text">0 / 11 marcados</p>
+        <div class="progress-bar" aria-hidden="true"><span id="progress-bar"></span></div>
+        <p class="hint" style="margin-top:1rem">
+          ¿Cuánto retener? Usa la
+          <a href="calculadora-retencion-irpf-facturas-autonomos-2026.html">calculadora de retención IRPF</a>.
+          ¿Cuánto IVA trimestral? La
+          <a href="calculadora-iva-trimestral-modelo-303-2026.html">calculadora modelo 303</a>.
+        </p>
+      </form>
+
+      <aside class="card">
+        <h2>Notas rápidas (orientativas)</h2>
+        <ul>
+          <li>La numeración debe ser secuencial dentro de cada serie.</li>
+          <li>Factura simplificada y factura completa no son lo mismo: a empresas suele bastar (y a menudo exigir) factura completa.</li>
+          <li>Retención IRPF suele aplicar cuando el cliente es empresario/profesional obligado a retener; no siempre con particulares.</li>
+          <li>Verifactu / sistemas de facturación electrónica van por fases: confirma tu caso en la AEAT antes de comprar software.</li>
+        </ul>
+        <p style="margin-top:1rem">
+          Pack opcional con plantillas y guía (sin plantilla tipo Verifactu):
+          <a href="../productos/kit-autonomo-2026.html">Kit Autónomo 2026 (19&nbsp;€, PayPal)</a>.
+        </p>
+      </aside>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso</h2>
+      <p>
+        Checklist educativa. Requisitos y menciones legales cambian; confirma siempre en la AEAT
+        o con un profesional colegiado. Kit Útil no emite facturas ni certifica software.
+      </p>
+      <p><a href="../hub-autonomos-espana-2026.html">Volver al hub autónomos</a></p>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España ·
+        <a href="../privacidad.html">Privacidad</a> ·
+        <a href="../terminos.html">Términos</a>
+      </p>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var boxes = Array.prototype.slice.call(document.querySelectorAll('#checks input[type=checkbox]'));
+      var text = document.getElementById('progress-text');
+      var bar = document.getElementById('progress-bar');
+      function update() {
+        var n = boxes.filter(function (b) { return b.checked; }).length;
+        var t = boxes.length;
+        text.textContent = n + ' / ' + t + ' marcados';
+        bar.style.width = Math.round((n / t) * 100) + '%';
+      }
+      boxes.forEach(function (b) { b.addEventListener('change', update); });
+      update();
+    })();
+  </script>
+</body>
+</html>
