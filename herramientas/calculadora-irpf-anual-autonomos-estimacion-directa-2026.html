@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Simulador IRPF anual autónomos estimación directa 2026: cuánto IRPF pago como autónomo. Base imponible, tramos orientativos, retenciones y resultado a pagar/devolver. Gratis. No es AEAT ni asesoramiento fiscal.">
+  <title>Calculadora IRPF anual autónomos estimación directa 2026 — Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-irpf-anual-autonomos-estimacion-directa-2026.html">
+  <meta property="og:title" content="IRPF autónomos estimación directa 2026 — simulador anual Kit Útil">
+  <meta property="og:description" content="Cuánto IRPF pago como autónomo: ingresos, gastos, RETA, retenciones y tramos orientativos. Resultado a pagar o devolver. Gratis. No es la AEAT.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-irpf-anual-autonomos-estimacion-directa-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+  <style>
+    .field-row { display: grid; gap: 0.75rem; }
+    @media (min-width: 640px) {
+      .field-row.two { grid-template-columns: 1fr 1fr; }
+    }
+    .brackets-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin: 0.75rem 0;
+    }
+    .brackets-table th,
+    .brackets-table td {
+      border: 1px solid var(--line);
+      padding: 0.45rem 0.6rem;
+      text-align: left;
+    }
+    .brackets-table th { background: var(--paper-2); font-weight: 600; }
+    .result-box.pay strong { color: var(--accent); }
+    .result-box.refund strong { color: var(--ok); }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora IRPF anual autónomos estimación directa 2026",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "inLanguage": "es-ES",
+    "url": "https://molomoco-boop.github.io/kit-util/herramientas/calculadora-irpf-anual-autonomos-estimacion-directa-2026.html",
+    "description": "Simulador gratuito orientativo del IRPF anual para autónomos en estimación directa en España (2026). No es asesoramiento fiscal ni tablas oficiales AEAT."
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../hub-autonomos-espana-2026.html">Autónomos</a>
+        <a href="calculadora-irpf-anual-autonomos-estimacion-directa-2026.html" aria-current="page">IRPF anual</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora IRPF anual autónomos (estimación directa) 2026</h1>
+      <p class="lede">
+        Estima de forma <strong>orientativa</strong> <strong>cuánto IRPF pagas como autónomo</strong>
+        en estimación directa: ingresos anuales, gastos deducibles, cuota RETA, retenciones
+        soportadas y un IRPF por <strong>tramos progresivos simplificados</strong>
+        (educativos, <strong>no son las tablas oficiales de la AEAT</strong>).
+        Obtienes base imponible estimada, IRPF estimado, retenciones y resultado a pagar o devolver.
+        <strong>No es la AEAT ni asesoramiento fiscal</strong>. Confirma con tu gestor / Importass.
+      </p>
+      <p class="hint" style="margin-top:0.75rem">
+        Autor: Miguel Mulet Giner · Kit Útil · Terrassa / España.
+        Relacionado:
+        <a href="calculadora-modelo-130-irpf-2026.html">modelo 130</a> ·
+        <a href="calculadora-retencion-irpf-facturas-autonomos-2026.html">retención IRPF facturas</a> ·
+        <a href="calculadora-gastos-deducibles-autonomos-2026.html">gastos deducibles</a> ·
+        <a href="calculadora-iva-trimestral-modelo-303-2026.html">IVA / 303</a> ·
+        <a href="calendario-fiscal-autonomos-2026.html">calendario fiscal</a> ·
+        <a href="../hub-autonomos-espana-2026.html">hub autónomos</a>
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Datos anuales (estimación directa)</h2>
+        <p class="hint">Todos los campos son editables. Cifras sin IVA. Pensado para territorio común, régimen general, persona física.</p>
+
+        <div class="field">
+          <label for="ingresos">Ingresos anuales (€)</label>
+          <input id="ingresos" name="ingresos" type="number" min="0" step="0.01" value="30000" inputmode="decimal">
+          <span class="hint">Ingresos computables del ejercicio (honorarios / ventas sin IVA).</span>
+        </div>
+
+        <div class="field">
+          <label for="gastos">Gastos deducibles anuales (€)</label>
+          <input id="gastos" name="gastos" type="number" min="0" step="0.01" value="5000" inputmode="decimal">
+          <span class="hint">Gastos afectos deducibles (sin incluir la cuota RETA si la pones abajo). Detalla partidas con la <a href="calculadora-gastos-deducibles-autonomos-2026.html">calculadora de gastos deducibles</a>.</span>
+        </div>
+
+        <div class="field-row two">
+          <div class="field">
+            <label for="reta">Cuota RETA anual (€)</label>
+            <input id="reta" name="reta" type="number" min="0" step="0.01" value="3600" inputmode="decimal">
+            <span class="hint">Editable. Por defecto 3.600&nbsp;€ (≈300&nbsp;€/mes). Sustituye por tu suma real de cuotas (tarifa plana, tramos Importass, etc.).</span>
+          </div>
+          <div class="field">
+            <label for="retenciones">Retenciones soportadas anuales (€)</label>
+            <input id="retenciones" name="retenciones" type="number" min="0" step="0.01" value="2500" inputmode="decimal">
+            <span class="hint">IRPF que te han retenido en facturas. Estima el % con la <a href="calculadora-retencion-irpf-facturas-autonomos-2026.html">calculadora de retención</a>.</span>
+          </div>
+        </div>
+
+        <button class="btn" type="button" id="calc-btn">Calcular IRPF orientativo</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado orientativo</h2>
+        <div class="result">
+          <div class="result-box">
+            <span>Base imponible estimada</span>
+            <strong id="out-base">—</strong>
+          </div>
+          <div class="result-box" style="margin-top:0.75rem">
+            <span>IRPF estimado (tramos orientativos)</span>
+            <strong id="out-irpf">—</strong>
+          </div>
+          <div class="result-box" id="out-box-resultado" style="margin-top:0.75rem">
+            <span id="out-label-resultado">Resultado a pagar / devolver</span>
+            <strong id="out-resultado">—</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>Ingresos</span><span id="out-ingresos">—</span></li>
+          <li><span>Gastos + RETA</span><span id="out-gastos-reta">—</span></li>
+          <li><span>Retenciones soportadas</span><span id="out-retenciones">—</span></li>
+          <li><span>Tipo medio efectivo (sobre base)</span><span id="out-tipo-medio">—</span></li>
+          <li><span>Hint modelo 130 trimestral (orient.)</span><span id="out-130">—</span></li>
+        </ul>
+        <p class="hint" id="out-aviso"></p>
+        <p class="hint" style="margin-top:0.75rem">
+          El pago fraccionado trimestral se estima aparte con la
+          <a href="calculadora-modelo-130-irpf-2026.html">calculadora modelo 130</a>
+          (≈20&nbsp;% del neto). Aquí el hint es solo (20&nbsp;% × base) ÷ 4.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap note">
+      <h2>Tramos orientativos usados (no oficiales AEAT)</h2>
+      <p class="hint">
+        Escala <strong>educativa y simplificada</strong> para ilustrar la progresividad.
+        <strong>No reproduce mínimos personales/familiares, reducciones, deducciones,
+        diferencias autonómicas ni las tablas oficiales de retención o liquidación de la AEAT</strong>.
+        No uses estas cifras para presentar la renta.
+      </p>
+      <table class="brackets-table" aria-label="Tramos IRPF orientativos">
+        <thead>
+          <tr><th>Base desde (€)</th><th>Hasta (€)</th><th>Tipo orientativo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0</td><td>12.450</td><td>19&nbsp;%</td></tr>
+          <tr><td>12.450</td><td>20.200</td><td>24&nbsp;%</td></tr>
+          <tr><td>20.200</td><td>35.200</td><td>30&nbsp;%</td></tr>
+          <tr><td>35.200</td><td>60.000</td><td>37&nbsp;%</td></tr>
+          <tr><td>60.000</td><td>300.000</td><td>45&nbsp;%</td></tr>
+          <tr><td>300.000</td><td>—</td><td>47&nbsp;%</td></tr>
+        </tbody>
+      </table>
+      <h2>Cómo usarla bien</h2>
+      <ol>
+        <li>Base estimada = ingresos − gastos deducibles − cuota RETA (no baja de 0 en este modelo simple).</li>
+        <li>El IRPF se calcula aplicando los tramos anteriores solo sobre esa base (sin mínimo personal).</li>
+        <li>Resultado = IRPF estimado − retenciones: positivo ≈ a pagar; negativo ≈ a devolver (orientativo).</li>
+        <li>El hint del modelo 130 es (20&nbsp;% de la base) ÷ 4: no sustituye al 130 real ni a pagos ya hechos.</li>
+        <li>Módulos, sociedades, forales, actividades especiales y la declaración de la renta oficial no están modelados.</li>
+      </ol>
+      <p>
+        Relacionado:
+        <a href="calculadora-modelo-130-irpf-2026.html">modelo 130</a> ·
+        <a href="calculadora-retencion-irpf-facturas-autonomos-2026.html">retención IRPF facturas</a> ·
+        <a href="calculadora-gastos-deducibles-autonomos-2026.html">gastos deducibles</a> ·
+        <a href="calculadora-iva-trimestral-modelo-303-2026.html">IVA / 303</a> ·
+        <a href="calendario-fiscal-autonomos-2026.html">calendario fiscal</a> ·
+        <a href="../hub-autonomos-espana-2026.html">hub autónomos</a> ·
+        <a href="../kit-autonomo-2026.html">Kit Autónomo 19&nbsp;€</a>
+      </p>
+    </section>
+
+    <section class="wrap" aria-label="Enlaces útiles">
+      <article class="card">
+        <h2>Más herramientas para autónomos</h2>
+        <p>
+          <a href="../calculadora-autonomos-2026.html">Calculadora RETA 2026</a> ·
+          <a href="calculadora-modelo-130-irpf-2026.html">Modelo 130 IRPF</a> ·
+          <a href="calculadora-retencion-irpf-facturas-autonomos-2026.html">Retención IRPF facturas</a> ·
+          <a href="calculadora-iva-trimestral-modelo-303-2026.html">IVA / modelo 303</a> ·
+          <a href="calculadora-gastos-deducibles-autonomos-2026.html">Gastos deducibles</a> ·
+          <a href="calendario-fiscal-autonomos-2026.html">Calendario fiscal</a> ·
+          <a href="../hub-autonomos-espana-2026.html">Hub autónomos España 2026</a>
+        </p>
+      </article>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso fuerte (léelo)</h2>
+      <p>
+        Esta página es una herramienta gratuita de <strong>orientación educativa</strong>
+        de Kit Útil (Miguel Mulet Giner · Terrassa / España).
+        <strong>No es asesoramiento fiscal, laboral ni contable</strong>.
+        <strong>No es la Agencia Tributaria (AEAT)</strong>, Importass, la TGSS ni un gestor colegiado.
+        Los tramos mostrados son <strong>orientativos y simplificados</strong>:
+        <strong>no son tablas oficiales AEAT 2026</strong> y no incluyen mínimos, deducciones,
+        bonificaciones, diferencias autonómicas, recargos ni casuística real de la renta.
+        Esta calculadora <strong>no presenta modelos</strong>, no liquida IRPF y no sustituye
+        a Renta Web / app AEAT. Confirma cualquier cifra con un profesional y con la AEAT
+        / Importass antes de declarar o pagar.
+      </p>
+    </aside>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>Kit Autónomo 2026</h2>
+        <p>
+          Calculadora RETA por tramos (Excel), libro de ingresos y gastos, calendario 303/130,
+          checklist de alta y guía. 19,00&nbsp;€. Sin plantilla de factura (Excel no vale como factura / Verifactu).
+        </p>
+        <p style="margin-top:0.5rem">
+          También: <a href="../kit-autonomo-2026.html">ficha Kit Autónomo</a> ·
+          <a href="../index.html">tienda Kit Útil</a> ·
+          <a href="calculadora-modelo-130-irpf-2026.html">modelo 130</a> ·
+          <a href="../hub-autonomos-espana-2026.html">hub autónomos</a>
+        </p>
+      </div>
+      <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=miguelmuletginerrr@gmail.com&amp;item_name=Kit%20Autonomo%202026&amp;amount=19.00&amp;currency_code=EUR&amp;charset=UTF-8">Pagar 19,00 € · Kit Autónomo</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · Terrassa / España</p>
+      <p>
+        Soporte / contacto: <a href="mailto:miguelmuletginerrr@gmail.com">miguelmuletginerrr@gmail.com</a>
+        · <a href="mailto:kitutil@agentmail.to">kitutil@agentmail.to</a>
+      </p>
+      <p>
+        <a href="../privacidad.html">Política de privacidad</a> ·
+        <a href="../terminos.html">Términos de uso</a> ·
+        <a href="../index.html">Volver a la tienda</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+  /* Tramos ORIENTATIVOS / educativos — NO son tablas oficiales AEAT */
+  const TRAMOS = [
+    { hasta: 12450, tipo: 0.19 },
+    { hasta: 20200, tipo: 0.24 },
+    { hasta: 35200, tipo: 0.30 },
+    { hasta: 60000, tipo: 0.37 },
+    { hasta: 300000, tipo: 0.45 },
+    { hasta: Infinity, tipo: 0.47 }
+  ];
+
+  const fmt = n => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+  const fmtPct = n => n.toLocaleString("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 2 }) + " %";
+
+  function irpfProgresivo(base) {
+    if (base <= 0) return 0;
+    let resto = base;
+    let desde = 0;
+    let cuota = 0;
+    for (const t of TRAMOS) {
+      const ancho = t.hasta - desde;
+      const tramo = Math.min(resto, ancho);
+      if (tramo <= 0) break;
+      cuota += tramo * t.tipo;
+      resto -= tramo;
+      desde = t.hasta;
+      if (resto <= 0) break;
+    }
+    return cuota;
+  }
+
+  function calcular() {
+    const ingresos = Number(document.getElementById("ingresos").value);
+    const gastos = Number(document.getElementById("gastos").value);
+    const reta = Number(document.getElementById("reta").value);
+    const retenciones = Number(document.getElementById("retenciones").value);
+    const aviso = document.getElementById("out-aviso");
+    const box = document.getElementById("out-box-resultado");
+
+    if (![ingresos, gastos, reta, retenciones].every(n => Number.isFinite(n) && n >= 0)) {
+      aviso.textContent = "Revisa que los campos numéricos sean ≥ 0.";
+      return;
+    }
+
+    const base = Math.max(0, ingresos - gastos - reta);
+    const irpf = irpfProgresivo(base);
+    const resultado = irpf - retenciones; // >0 pagar, <0 devolver
+    const tipoMedio = base > 0 ? (irpf / base) * 100 : 0;
+    const hint130 = (base * 0.20) / 4;
+
+    document.getElementById("out-base").textContent = fmt(base);
+    document.getElementById("out-irpf").textContent = fmt(irpf);
+    document.getElementById("out-ingresos").textContent = fmt(ingresos);
+    document.getElementById("out-gastos-reta").textContent = fmt(gastos + reta);
+    document.getElementById("out-retenciones").textContent = fmt(retenciones);
+    document.getElementById("out-tipo-medio").textContent = base > 0 ? fmtPct(tipoMedio) : "—";
+    document.getElementById("out-130").textContent = fmt(hint130);
+
+    const outRes = document.getElementById("out-resultado");
+    const outLabel = document.getElementById("out-label-resultado");
+    box.classList.remove("pay", "refund");
+    if (resultado > 0.005) {
+      outLabel.textContent = "Resultado orientativo a pagar";
+      outRes.textContent = fmt(resultado);
+      box.classList.add("pay");
+    } else if (resultado < -0.005) {
+      outLabel.textContent = "Resultado orientativo a devolver";
+      outRes.textContent = fmt(Math.abs(resultado));
+      box.classList.add("refund");
+    } else {
+      outLabel.textContent = "Resultado orientativo (neutro)";
+      outRes.textContent = fmt(0);
+    }
+
+    let msg = "Cifras orientativas con tramos educativos (no AEAT). Sin mínimo personal ni deducciones reales.";
+    if (base === 0 && (gastos + reta) >= ingresos) {
+      msg += " La base queda en 0: gastos + RETA cubren o superan los ingresos en este modelo simple.";
+    }
+    if (retenciones > irpf + 0.01) {
+      msg += " Las retenciones superan el IRPF estimado: el exceso aparece como devolución orientativa.";
+    }
+    msg += " Confirma con gestor / AEAT / Importass antes de declarar.";
+    aviso.textContent = msg;
+  }
+
+  ["ingresos", "gastos", "reta", "retenciones"].forEach(id => {
+    document.getElementById(id).addEventListener("input", calcular);
+    document.getElementById(id).addEventListener("change", calcular);
+  });
+  document.getElementById("calc-btn").addEventListener("click", calcular);
+  calcular();
+  </script>
+</body>
+</html>
