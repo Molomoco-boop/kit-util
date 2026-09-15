@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita recargo de equivalencia IVA 2026 (España): 5,2 %, 1,4 %, 0,5 %. Base → IVA + recargo. Orientativa Kit Útil. No es AEAT.">
+  <title>Calculadora recargo de equivalencia IVA 2026 — Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-recargo-equivalencia-iva-2026.html">
+  <meta property="og:title" content="Recargo de equivalencia IVA 2026 — calculadora Kit Útil">
+  <meta property="og:description" content="Estima IVA + recargo de equivalencia sobre una base. Tipos orientativos 5,2/1,4/0,5 %. Gratis. No es asesoramiento fiscal.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-recargo-equivalencia-iva-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora recargo de equivalencia IVA 2026","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES","url":"https://molomoco-boop.github.io/kit-util/herramientas/calculadora-recargo-equivalencia-iva-2026.html","description":"Herramienta gratuita orientativa para estimar IVA y recargo de equivalencia en España."}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark">Kit Útil</span><span class="brand-tag">España · 2026</span></a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../hub-autonomos-espana-2026.html">Autónomos</a>
+        <a href="calculadora-recargo-equivalencia-iva-2026.html" aria-current="page">Recargo equiv.</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora de recargo de equivalencia IVA 2026</h1>
+      <p class="lede">Estima <strong>IVA + recargo de equivalencia</strong> sobre una base imponible (tipos orientativos habituales: 5,2&nbsp;% con IVA 21&nbsp;%, 1,4&nbsp;% con IVA 10&nbsp;%, 0,5&nbsp;% con IVA 4&nbsp;%). Pensada para comercio minorista en régimen de recargo. <strong>No es la AEAT ni asesoramiento fiscal</strong>.</p>
+      <p class="hint" style="margin-top:0.75rem">Relacionado: <a href="calculadora-iva-trimestral-modelo-303-2026.html">modelo 303</a> · <a href="checklist-factura-autonomo-espana-2026.html">checklist factura</a> · <a href="../hub-autonomos-espana-2026.html">hub autónomos</a></p>
+    </section>
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Datos</h2>
+        <label>Base imponible (€)<input type="number" id="base" min="0" step="0.01" value="1000"></label>
+        <fieldset style="margin-top:1rem;border:0;padding:0">
+          <legend>Tipo</legend>
+          <label><input type="radio" name="tipo" value="21" checked> IVA 21 % + recargo 5,2 %</label><br>
+          <label><input type="radio" name="tipo" value="10"> IVA 10 % + recargo 1,4 %</label><br>
+          <label><input type="radio" name="tipo" value="4"> IVA 4 % + recargo 0,5 %</label>
+        </fieldset>
+        <div class="card" style="margin-top:1rem;background:#f8fafc">
+          <p>IVA: <strong id="iva">0</strong> €</p>
+          <p>Recargo: <strong id="recargo">0</strong> €</p>
+          <p>Total factura: <strong id="total">0</strong> €</p>
+        </div>
+      </form>
+      <aside class="card">
+        <h2>Notas</h2>
+        <ul>
+          <li>El recargo de equivalencia lo soportan minoristas en ese régimen; no confundir con retenciones IRPF.</li>
+          <li>Confirma tipos vigentes en la AEAT antes de facturar.</li>
+          <li>Pack opcional: <a href="../productos/kit-autonomo-2026.html">Kit Autónomo 2026 (19&nbsp;€, PayPal)</a>.</li>
+        </ul>
+      </aside>
+    </section>
+    <aside class="wrap disclaimer"><h2>Aviso</h2><p>Orientación educativa. No sustituye a AEAT ni a un profesional colegiado.</p></aside>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><p>Kit Útil · Miguel Mulet Giner · España · <a href="../privacidad.html">Privacidad</a> · <a href="../terminos.html">Términos</a></p></div></footer>
+  <script>
+  (function(){
+    var map={21:{iva:0.21,re:0.052},10:{iva:0.10,re:0.014},4:{iva:0.04,re:0.005}};
+    function euro(n){return (Math.round(n*100)/100).toFixed(2).replace('.',',');}
+    function run(){
+      var base=parseFloat(document.getElementById('base').value)||0;
+      var t=(document.querySelector('input[name=tipo]:checked')||{}).value||'21';
+      var m=map[t];
+      var iva=base*m.iva, re=base*m.re;
+      document.getElementById('iva').textContent=euro(iva);
+      document.getElementById('recargo').textContent=euro(re);
+      document.getElementById('total').textContent=euro(base+iva+re);
+    }
+    document.getElementById('base').addEventListener('input',run);
+    document.querySelectorAll('input[name=tipo]').forEach(function(r){r.addEventListener('change',run);});
+    run();
+  })();
+  </script>
+</body>
+</html>
