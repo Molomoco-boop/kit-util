@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita de cuota de autónomo colaborador 2026: estima cuota mensual y anual con base, tipo y bonificación editables. Orientativa, no es AEAT ni TGSS.">
+  <title>Calculadora cuota autónomo colaborador 2026 — Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-cuota-autonomo-colaborador-2026.html">
+  <meta property="og:title" content="Cuota autónomo colaborador 2026 — calculadora Kit Útil">
+  <meta property="og:description" content="Estima la cuota mensual y anual de un autónomo colaborador con importes editables. Gratis y orientativo: confirma en Importass/TGSS.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-cuota-autonomo-colaborador-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Calculadora cuota autónomo colaborador 2026",
+    "applicationCategory":"FinanceApplication",
+    "operatingSystem":"Web",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+    "inLanguage":"es-ES",
+    "url":"https://molomoco-boop.github.io/kit-util/herramientas/calculadora-cuota-autonomo-colaborador-2026.html",
+    "description":"Herramienta gratuita y orientativa para estimar la cuota mensual y anual de un autónomo colaborador en España."
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../hub-autonomos-espana-2026.html">Autónomos</a>
+        <a href="calculadora-cuota-autonomo-colaborador-2026.html" aria-current="page">Colaborador</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Calculadora cuota autónomo colaborador 2026</h1>
+      <p class="lede">
+        Estima la <strong>cuota mensual y anual de un autónomo colaborador</strong> a partir de una base,
+        un tipo de cotización y una posible bonificación o reducción. Todos los importes son editables
+        para que puedas probar escenarios. <strong>No es la TGSS, Importass ni asesoramiento laboral</strong>.
+      </p>
+      <p class="hint" style="margin-top:0.75rem">
+        Relacionado:
+        <a href="../calculadora-autonomos-2026.html">calculadora RETA</a> ·
+        <a href="tarifa-plana-autonomos-2026.html">tarifa plana</a> ·
+        <a href="simulador-coste-primer-ano-autonomo-2026.html">coste del primer año</a> ·
+        <a href="../hub-autonomos-espana-2026.html">hub autónomos</a>
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Tus datos (editables)</h2>
+        <div class="field">
+          <label for="base">Base mensual de cotización (€)</label>
+          <input id="base" name="base" type="number" min="0" step="0.01" value="1000" inputmode="decimal">
+          <span class="hint">Ejemplo de trabajo, no una base oficial. Confirma tu base aplicable en Importass/TGSS.</span>
+        </div>
+        <div class="field">
+          <label for="tipo">Tipo total de cotización (%)</label>
+          <input id="tipo" name="tipo" type="number" min="0" max="100" step="0.01" value="31.40" inputmode="decimal">
+          <span class="hint">Campo editable para hacer escenarios; el tipo vigente puede cambiar y depende de la cobertura aplicable.</span>
+        </div>
+        <div class="field">
+          <label for="meses">Meses cotizados en 2026</label>
+          <input id="meses" name="meses" type="number" min="0" max="12" step="1" value="12" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="bonificacion">Bonificación o reducción mensual (€)</label>
+          <input id="bonificacion" name="bonificacion" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+          <span class="hint">Déjalo en 0 si no sabes si te corresponde. No presupone ninguna bonificación oficial.</span>
+        </div>
+        <div class="field">
+          <label for="otros">Otros conceptos mensuales (€) <em>(opcional)</em></label>
+          <input id="otros" name="otros" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+          <span class="hint">Úsalo solo si quieres sumar un importe mensual separado; no es parte automática de la cuota.</span>
+        </div>
+        <button class="btn" type="button" id="calc-btn">Calcular cuota estimada</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado orientativo</h2>
+        <div class="result">
+          <div class="result-box">
+            <span>Cuota mensual estimada</span>
+            <strong id="out-mensual">—</strong>
+          </div>
+          <div class="result-box">
+            <span>Total estimado 2026</span>
+            <strong id="out-anual">—</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>Cuota antes de reducción</span><span id="out-bruta">—</span></li>
+          <li><span>Reducción aplicada</span><span id="out-bonificacion">—</span></li>
+          <li><span>Otros conceptos</span><span id="out-otros">—</span></li>
+          <li><span>Meses incluidos</span><span id="out-meses">—</span></li>
+        </ul>
+        <p class="hint" id="out-aviso"></p>
+      </div>
+    </section>
+
+    <section class="wrap" aria-label="Información relacionada">
+      <article class="card">
+        <h2>¿Qué significa ser autónomo colaborador?</h2>
+        <p>
+          Es una situación específica para familiares que colaboran de forma habitual en la actividad
+          de la persona autónoma titular. El parentesco, la convivencia, la habitualidad y la situación
+          concreta pueden afectar al alta, a las obligaciones y a las posibles reducciones.
+        </p>
+        <p>
+          Esta calculadora solo multiplica la base por el tipo que introduzcas y resta, como máximo,
+          la bonificación mensual que escribas. No determina si puedes ser colaborador ni sustituye
+          el cálculo oficial. Para comparar tu escenario, consulta también la
+          <a href="../calculadora-autonomos-2026.html">calculadora RETA 2026</a> y la
+          <a href="checklist-alta-autonomo-espana-2026.html">checklist de alta de autónomo</a>.
+        </p>
+      </article>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso importante</h2>
+      <p>
+        Esta página ofrece <strong>orientación educativa</strong> de Kit Útil. <strong>No es la AEAT,
+        la TGSS ni Importass</strong>, y no constituye asesoramiento fiscal, laboral o contable.
+        Los valores iniciales son ejemplos editables, no una cuota oficial. Confirma bases, tipos,
+        coberturas, bonificaciones y requisitos con la Seguridad Social o un profesional antes de
+        darte de alta o tomar decisiones económicas. La normativa puede cambiar durante 2026.
+      </p>
+    </aside>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>Kit Autónomo 2026</h2>
+        <p>
+          Si quieres ordenar tus primeros pasos con plantillas de ingresos y gastos, calendario 303/130,
+          checklist de alta y guía práctica: <strong>19,00&nbsp;€ pago único</strong>, sin permanencia.
+        </p>
+        <p style="margin-top:0.5rem">
+          <a href="../productos/kit-autonomo-2026.html">Ver el Kit Autónomo 19&nbsp;€</a> ·
+          <a href="../hub-autonomos-espana-2026.html">Hub autónomos</a>
+        </p>
+      </div>
+      <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=miguelmuletginerrr@gmail.com&amp;item_name=Kit%20Autonomo%202026&amp;amount=19.00&amp;currency_code=EUR&amp;charset=UTF-8">Ver pago PayPal · 19,00 €</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España</p>
+      <p>
+        <a href="../privacidad.html">Privacidad</a> ·
+        <a href="../terminos.html">Términos</a> ·
+        <a href="mailto:miguelmuletginerrr@gmail.com">Contacto</a> ·
+        <a href="../index.html">Volver a la tienda</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const ids = ["base", "tipo", "meses", "bonificacion", "otros"];
+      const euro = (n) => n.toLocaleString("es-ES", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }) + " €";
+      const value = (id) => Number(document.getElementById(id).value);
+
+      function calcular() {
+        const base = value("base");
+        const tipo = value("tipo");
+        const meses = value("meses");
+        const bonificacion = value("bonificacion");
+        const otros = value("otros");
+        const aviso = document.getElementById("out-aviso");
+        aviso.textContent = "";
+
+        if (![base, tipo, meses, bonificacion, otros].every(Number.isFinite) ||
+            base < 0 || tipo < 0 || meses < 0 || meses > 12 || bonificacion < 0 || otros < 0) {
+          aviso.textContent = "Revisa los campos: usa números válidos y entre 0 y 12 meses.";
+          return;
+        }
+
+        const bruta = base * tipo / 100;
+        const aplicada = Math.min(bruta, bonificacion);
+        const mensual = bruta - aplicada + otros;
+        const anual = mensual * meses;
+
+        document.getElementById("out-mensual").textContent = euro(mensual);
+        document.getElementById("out-anual").textContent = euro(anual);
+        document.getElementById("out-bruta").textContent = euro(bruta);
+        document.getElementById("out-bonificacion").textContent = euro(aplicada);
+        document.getElementById("out-otros").textContent = euro(otros);
+        document.getElementById("out-meses").textContent = meses.toLocaleString("es-ES");
+        if (bonificacion > bruta) {
+          aviso.textContent = "La reducción introducida supera la cuota bruta; se ha limitado a 0 € de cuota antes de sumar otros conceptos.";
+        }
+      }
+
+      ids.forEach((id) => document.getElementById(id).addEventListener("input", calcular));
+      document.getElementById("calc-btn").addEventListener("click", calcular);
+      calcular();
+    }());
+  </script>
+</body>
+</html>
