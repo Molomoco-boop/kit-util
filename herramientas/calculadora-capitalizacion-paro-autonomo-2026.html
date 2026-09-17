@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita de capitalización del paro / pago único para autónomos 2026: estima el importe capitalizable a partir de la prestación pendiente y el % orientativo. No es el SEPE.">
+  <title>Capitalización del paro para autónomos 2026 — calculadora | Kit Útil</title>
+  <link rel="canonical" href="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-capitalizacion-paro-autonomo-2026.html">
+  <meta property="og:title" content="Capitalización del paro / pago único autónomos 2026 — Kit Útil">
+  <meta property="og:description" content="Estima el importe capitalizable del paro para darte de alta de autónomo. Checklist orientativa de requisitos. Gratis. No es el SEPE.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molomoco-boop.github.io/kit-util/herramientas/calculadora-capitalizacion-paro-autonomo-2026.html">
+  <meta property="og:locale" content="es_ES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Calculadora capitalización del paro autónomo 2026",
+    "applicationCategory":"FinanceApplication",
+    "operatingSystem":"Web",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+    "inLanguage":"es-ES",
+    "url":"https://molomoco-boop.github.io/kit-util/herramientas/calculadora-capitalizacion-paro-autonomo-2026.html",
+    "description":"Herramienta gratuita y orientativa para estimar el pago único / capitalización del paro al darse de alta de autónomo en España."
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">Kit Útil</span>
+        <span class="brand-tag">España · 2026</span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="../index.html">Tienda</a>
+        <a href="../hub-autonomos-espana-2026.html">Autónomos</a>
+        <a href="../hub-empleo-espana-2026.html">Empleo</a>
+        <a href="calculadora-capitalizacion-paro-autonomo-2026.html" aria-current="page">Capitalización</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Herramienta gratuita · no es un producto de pago</p>
+      <h1>Capitalización del paro para autónomos 2026 (pago único)</h1>
+      <p class="lede">
+        Estima de forma <strong>orientativa</strong> cuánto podrías capitalizar de tu prestación
+        contributiva por desempleo si te das de alta como autónomo (pago único / capitalización).
+        Introduce la prestación mensual bruta estimada, lo que te queda pendiente y el porcentaje
+        que quieras capitalizar. En la práctica, para iniciar actividad por cuenta propia suele
+        plantearse hasta el <strong>100&nbsp;%</strong> del pendiente — <strong>etiqueta 2026 orientativa</strong>:
+        las reglas del SEPE cambian y cada expediente es distinto.
+        <strong>No es el SEPE</strong> ni asesoramiento laboral.
+      </p>
+      <p class="hint" style="margin-top:0.75rem">
+        Relacionado:
+        <a href="calculadora-prestacion-desempleo-paro-2026.html">calculadora del paro</a> ·
+        <a href="checklist-alta-autonomo-espana-2026.html">checklist de alta</a> ·
+        <a href="tarifa-plana-autonomos-2026.html">tarifa plana</a> ·
+        <a href="simulador-coste-primer-ano-autonomo-2026.html">coste del primer año</a> ·
+        <a href="../hub-autonomos-espana-2026.html">hub autónomos</a>
+      </p>
+    </section>
+
+    <section class="wrap calc-layout">
+      <form class="card" id="calc-form" onsubmit="return false;">
+        <h2>Tus datos (editables)</h2>
+        <div class="field">
+          <label for="mensual">Prestación mensual bruta estimada (€)</label>
+          <input id="mensual" name="mensual" type="number" min="0" step="0.01" value="1120" inputmode="decimal">
+          <span class="hint">La cuantía bruta que cobras (o cobrarías) al mes. Si no la tienes, estima primero con la <a href="calculadora-prestacion-desempleo-paro-2026.html">calculadora del paro 2026</a>.</span>
+        </div>
+        <div class="field">
+          <label for="modo">Cómo indicas lo pendiente</label>
+          <select id="modo" name="modo">
+            <option value="meses" selected>Meses de prestación pendientes</option>
+            <option value="dias">Días de prestación pendientes</option>
+            <option value="total">Importe total pendiente (€)</option>
+          </select>
+          <span class="hint">Usa el dato que tengas del SEPE (reconocimiento o simulación). Si eliges importe total, la prestación mensual solo sirve de referencia.</span>
+        </div>
+        <div class="field" id="wrap-meses">
+          <label for="meses">Meses pendientes</label>
+          <input id="meses" name="meses" type="number" min="0" max="24" step="0.1" value="12" inputmode="decimal">
+          <span class="hint">Ejemplo: 12 meses. Máximo orientativo del contributivo: 24 meses.</span>
+        </div>
+        <div class="field" id="wrap-dias" hidden>
+          <label for="dias">Días pendientes</label>
+          <input id="dias" name="dias" type="number" min="0" max="720" step="1" value="360" inputmode="numeric">
+          <span class="hint">Se convierte a meses equivalentes ÷ 30 para la estimación.</span>
+        </div>
+        <div class="field" id="wrap-total" hidden>
+          <label for="total">Importe total pendiente bruto (€)</label>
+          <input id="total" name="total" type="number" min="0" step="0.01" value="13440" inputmode="decimal">
+          <span class="hint">Si el SEPE te da un pendiente total, úsalo aquí y el % se aplica sobre ese importe.</span>
+        </div>
+        <div class="field">
+          <label for="porcentaje">% a capitalizar (orientativo 2026)</label>
+          <input id="porcentaje" name="porcentaje" type="number" min="0" max="100" step="1" value="100" inputmode="numeric">
+          <span class="hint">Para iniciar actividad por cuenta propia, en escenarios habituales se plantea hasta el 100&nbsp;% del pendiente. Confirma en la sede electrónica del SEPE (<span lang="en">sede.sepe.gob.es</span>) qué % te corresponde; las reglas cambian.</span>
+        </div>
+        <div class="field">
+          <label for="reserva">Reserva / no capitalizar (€) <em>(opcional)</em></label>
+          <input id="reserva" name="reserva" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+          <span class="hint">Si quieres dejar una parte sin capitalizar (colchón), restamos este importe del resultado.</span>
+        </div>
+        <button class="btn" type="button" id="calc-btn">Calcular importe estimado</button>
+      </form>
+
+      <div class="card" aria-live="polite">
+        <h2>Resultado orientativo</h2>
+        <div class="result">
+          <div class="result-box">
+            <span>Importe estimado capitalizable</span>
+            <strong id="out-cap">—</strong>
+          </div>
+          <div class="result-box">
+            <span>Pendiente bruto estimado</span>
+            <strong id="out-pendiente">—</strong>
+          </div>
+        </div>
+        <ul class="meta-list">
+          <li><span>% aplicado</span><span id="out-pct">—</span></li>
+          <li><span>Meses equivalentes</span><span id="out-meses">—</span></li>
+          <li><span>Reserva restada</span><span id="out-reserva">—</span></li>
+          <li><span>Tras reserva</span><span id="out-neto">—</span></li>
+        </ul>
+        <p class="hint" id="out-aviso"></p>
+      </div>
+    </section>
+
+    <section class="wrap" aria-label="Checklist y contexto">
+      <article class="card">
+        <h2>Checklist orientativa (requisitos típicos)</h2>
+        <p>Lista educativa de lo que suele pedirse o revisarse. No es la lista oficial del SEPE; cada caso puede exigir documentación distinta.</p>
+        <ul>
+          <li>Estar percibiendo (o tener reconocido) el derecho a <strong>prestación contributiva</strong> por desempleo, con pendiente suficiente según las reglas vigentes.</li>
+          <li>Solicitar la capitalización <strong>antes</strong> de iniciar la actividad (o en los plazos que indique el SEPE en tu convocatoria/expediente).</li>
+          <li>Comprometerte a darte de alta en el <strong>RETA</strong> (o en la mutua / régimen que te corresponda) y a iniciar la actividad efectivamente.</li>
+          <li>Presentar un <strong>plan de negocio / memoria</strong> de la actividad (inversión, gastos de puesta en marcha, viabilidad orientativa).</li>
+          <li>No haber capitalizado el paro en un periodo previo (a menudo se habla de varios años; confirma el plazo exacto en el SEPE).</li>
+          <li>Justificar el destino del pago único (inversión, cuotas, gastos de constitución…) según lo que te pidan.</li>
+          <li>Cumplir obligaciones de seguimiento (mantenerte de alta el tiempo mínimo, aportar justificantes, etc.).</li>
+        </ul>
+        <p>
+          Siguiente paso práctico: la
+          <a href="checklist-alta-autonomo-espana-2026.html">checklist de alta de autónomo 2026</a>
+          (RETA, IAE, 036/037) y el
+          <a href="simulador-coste-primer-ano-autonomo-2026.html">simulador de coste del primer año</a>.
+        </p>
+      </article>
+      <article class="card">
+        <h2>Qué es (y qué no es) la capitalización</h2>
+        <p>
+          La capitalización del paro, también llamada <strong>pago único</strong>, permite cobrar de una vez
+          (total o parcialmente) el importe pendiente de la prestación contributiva para facilitar el
+          inicio de una actividad por cuenta propia. No es un crédito, no es una subvención genérica
+          y no sustituye a la tarifa plana RETA ni a las ayudas autonómicas.
+        </p>
+        <p>
+          Esta calculadora solo multiplica el pendiente estimado por el porcentaje que indiques y
+          resta una reserva opcional. No decide si tienes derecho, no aplica topes específicos de
+          tu expediente ni IRPF de la prestación capitalizada. Contrasta siempre en la sede
+          electrónica del SEPE y, si hace falta, con un profesional laboral.
+        </p>
+      </article>
+    </section>
+
+    <aside class="wrap disclaimer">
+      <h2>Aviso importante</h2>
+      <p>
+        Esta página ofrece <strong>orientación educativa</strong> de Kit Útil (2026).
+        <strong>No es el SEPE, Importass, la AEAT ni un abogado laboralista</strong>.
+        No constituye asesoramiento laboral, fiscal ni jurídico. Los importes iniciales son
+        ejemplos editables. Las normas de capitalización / pago único cambian; el porcentaje
+        máximo, los plazos, la documentación y las incompatibilidades dependen de tu caso.
+        Confirma en la sede electrónica del SEPE (concepto: <span lang="en">sede.sepe.gob.es</span>)
+        o con un profesional antes de darte de alta o de solicitar el pago único.
+        Kit Útil no tramita capitalizaciones ni altas RETA.
+      </p>
+    </aside>
+
+    <section class="wrap cta-band">
+      <div>
+        <h2>Kit Autónomo 2026</h2>
+        <p>
+          Si quieres ordenar el alta con plantillas de ingresos y gastos, calendario 303/130,
+          checklist y guía práctica: <strong>19,00&nbsp;€ pago único</strong>, sin permanencia.
+          Sin plantilla de factura tipo Verifactu.
+        </p>
+        <p style="margin-top:0.5rem">
+          <a href="../productos/kit-autonomo-2026.html">Ver el Kit Autónomo 19&nbsp;€</a> ·
+          <a href="../hub-autonomos-espana-2026.html">Hub autónomos</a> ·
+          <a href="../hub-empleo-espana-2026.html">Hub empleo</a>
+        </p>
+      </div>
+      <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=miguelmuletginerrr@gmail.com&amp;item_name=Kit%20Autonomo%202026&amp;amount=19.00&amp;currency_code=EUR&amp;charset=UTF-8">Ver pago PayPal · 19,00 €</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Kit Útil · Miguel Mulet Giner · España</p>
+      <p>
+        <a href="../privacidad.html">Privacidad</a> ·
+        <a href="../terminos.html">Términos</a> ·
+        <a href="mailto:miguelmuletginerrr@gmail.com">Contacto</a> ·
+        <a href="../index.html">Volver a la tienda</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const euro = (n) => n.toLocaleString("es-ES", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }) + " €";
+      const val = (id) => Number(document.getElementById(id).value);
+
+      function syncMode() {
+        const modo = document.getElementById("modo").value;
+        document.getElementById("wrap-meses").hidden = modo !== "meses";
+        document.getElementById("wrap-dias").hidden = modo !== "dias";
+        document.getElementById("wrap-total").hidden = modo !== "total";
+      }
+
+      function calcular() {
+        const mensual = val("mensual");
+        const pct = val("porcentaje");
+        const reserva = val("reserva");
+        const modo = document.getElementById("modo").value;
+        const aviso = document.getElementById("out-aviso");
+        aviso.textContent = "";
+
+        if (![mensual, pct, reserva].every(Number.isFinite) || mensual < 0 || pct < 0 || pct > 100 || reserva < 0) {
+          aviso.textContent = "Revisa los campos: números válidos, % entre 0 y 100, reserva ≥ 0.";
+          return;
+        }
+
+        let pendiente = 0;
+        let mesesEq = 0;
+
+        if (modo === "meses") {
+          const meses = val("meses");
+          if (!Number.isFinite(meses) || meses < 0) {
+            aviso.textContent = "Indica los meses pendientes (≥ 0).";
+            return;
+          }
+          mesesEq = meses;
+          pendiente = mensual * meses;
+        } else if (modo === "dias") {
+          const dias = val("dias");
+          if (!Number.isFinite(dias) || dias < 0) {
+            aviso.textContent = "Indica los días pendientes (≥ 0).";
+            return;
+          }
+          mesesEq = dias / 30;
+          pendiente = (mensual / 30) * dias;
+        } else {
+          pendiente = val("total");
+          if (!Number.isFinite(pendiente) || pendiente < 0) {
+            aviso.textContent = "Indica el importe total pendiente (≥ 0).";
+            return;
+          }
+          mesesEq = mensual > 0 ? pendiente / mensual : 0;
+        }
+
+        const brutoCap = pendiente * (pct / 100);
+        const neto = Math.max(0, brutoCap - reserva);
+
+        document.getElementById("out-cap").textContent = euro(brutoCap);
+        document.getElementById("out-pendiente").textContent = euro(pendiente);
+        document.getElementById("out-pct").textContent = pct.toLocaleString("es-ES") + " %";
+        document.getElementById("out-meses").textContent = mesesEq.toLocaleString("es-ES", {
+          maximumFractionDigits: 1
+        });
+        document.getElementById("out-reserva").textContent = euro(reserva);
+        document.getElementById("out-neto").textContent = euro(neto);
+
+        if (pendiente === 0) {
+          aviso.textContent = "Con pendiente 0 no hay importe capitalizable en esta estimación.";
+        } else if (reserva > brutoCap) {
+          aviso.textContent = "La reserva supera el capitalizable; el resultado tras reserva queda en 0 €. Estimación orientativa: confirma en el SEPE.";
+        } else {
+          aviso.textContent = "Estimación educativa 2026. El SEPE decide el derecho, el % y la documentación. No uses este número para la solicitud oficial.";
+        }
+      }
+
+      document.getElementById("modo").addEventListener("change", function () {
+        syncMode();
+        calcular();
+      });
+      ["mensual", "meses", "dias", "total", "porcentaje", "reserva"].forEach(function (id) {
+        document.getElementById(id).addEventListener("input", calcular);
+      });
+      document.getElementById("calc-btn").addEventListener("click", calcular);
+      syncMode();
+      calcular();
+    }());
+  </script>
+</body>
+</html>
